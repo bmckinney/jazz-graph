@@ -4,7 +4,15 @@
 
 // artists
 CREATE 
-	(a1:Artist{uuid:'96af5214-891d-4c6e-9859-7944d9aab4dd', name:'Miles Davis', primary_instrument:'trumpet'}),
+	(a1:Artist{
+		uuid:'96af5214-891d-4c6e-9859-7944d9aab4dd', 
+		name:'Miles Davis', 
+		birth_date: '1926-05-26',
+		death_date: '1991-08-21',
+		genres: ['jazz'],
+		gender: 'male',
+		links: ['https://en.wikipedia.org/wiki/Miles_Davis','http://www.milesdavis.com/'],
+		primary_instrument:'trumpet'}),
 	(a2:Artist{uuid:'3804ccca-e5ec-4092-9cb2-2f8c159c73f6', name:'Cannonball Adderley', primary_instrument:'alto saxophone'}),
 	(a3:Artist{uuid:'c547ecab-99d1-4708-a71e-b83d763d915c', name:'John Coltrane', primary_instrument:'tenor saxophone'}),
 	(a4:Artist{uuid:'a0e9df5e-af97-487f-b3b4-ed83047dd8f6', name:'Wynton Kelly', primary_instrument:'piano'}),
@@ -17,7 +25,7 @@ CREATE
 	(a8:Artist{uuid:'2f7962ec-e058-4983-8ad9-d904f653daf6', name:'Teo Macero'}),
 	(a9:Artist{uuid:'7fe93d1d-0e79-4966-9e8a-d58766864fb5', name:'Irving Townsend'}),
 	(a10:Artist{uuid:'74b2c99e-1b70-479a-ba38-dccd7738280f', name:'Fred Plaut'}),
-	(a11:Artist{uuid:'48d3c6e4-cb6e-48a8-8b3b-98c032bfe986', name:'Robert Herridge'}),
+	(a11:Artist{uuid:'48d3c6e4-cb6e-48a8-8b3b-98c032bfe986', name:'Robert Herridge', links:['https://en.wikipedia.org/wiki/Robert_Herridge']}),
 	(a12:Artist{uuid:'4232fb5c-709f-4853-9b14-d1dc2b0ff40a', name:'Gil Evans'})
 
 // works

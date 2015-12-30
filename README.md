@@ -8,7 +8,7 @@ MATCH (s:Session { name: "Kind of Blue: Miles Davis Sextet" })-[:HAS_PERFORMANCE
 RETURN s, a, p;
 
 // artists & performances in album(s)
-MATCH (r:Album { name: "Kind of Blue" })-[:HAS_TRACK]->(p)<-[:PARTICIPATED_IN]-(a)
+MATCH (r:Release { name: "Kind of Blue" })-[:HAS_TRACK]->(p)<-[:PARTICIPATED_IN]-(a)
 RETURN r, a, p;
 
 // sessions by an artist

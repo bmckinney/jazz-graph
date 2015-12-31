@@ -13,6 +13,7 @@ def main(args):
     tracks = ''
     leaders = ''
     labels = ''
+    performances = ''
 
     print "// releases"
 
@@ -59,6 +60,29 @@ def main(args):
                         if len(props) > 0:
                             props = "{" + props + "}"
 
+                        # get recordings (performances)
+                        rec = m.get_recording_by_id(track['recording']['id'],
+                                                    ["artist-credits", "releases"])['recording']
+
+                        perfid = "perf_" + track['recording']['id'].rsplit('-', 1)[1]
+
+                        performances += "MERGE \n(" + perfid + ":Performance{\n"
+                        if 'title' in rec:
+                            performances += "\tname: '" + rec['title'].replace("'", "\\'") + "',\n"
+                        if 'disambiguation' in rec:
+                            performances += "\tdisambiguation: '" + rec['disambiguation'].replace("'", "\'") + "',\n"
+                        if 'length' in rec:
+                            minutes, milliseconds = divmod(int(rec['length']), 60000)
+                            seconds = float(milliseconds) / 1000
+                            s = "%i:%02i" % (minutes, seconds)
+                            performances += "\tduration: '" + s + "',\n"
+                        performances += "\tuuid: '" + rec['id'] + "'\n"
+                        performances += "})\n"
+
+                        # debug
+                        # for key, value in rec.iteritems():
+                        #     print key, value
+
                         tid = "perf_" + track['recording']['id'].rsplit('-', 1)[1]
                         tracks += "MERGE (" + rid + ")-[:HAS_TRACK " + props + "]->(" + tid + ")\n"
 
@@ -69,8 +93,9 @@ def main(args):
         # leader relationship
         if 'artist-credit' in rel:
             for artist in rel['artist-credit']:
-                aid = "artist_" + artist['artist']['id'].rsplit('-', 1)[1]
-                leaders += "MERGE (" + rid + ")-[:HAS_LEADER]->(" + aid + ")"
+                if 'artist' in artist:
+                    aid = "artist_" + artist['artist']['id'].rsplit('-', 1)[1]
+                    leaders += "MERGE (" + rid + ")-[:HAS_LEADER]->(" + aid + ")\n"
 
         if 'url-relation-list' in rel:
 
@@ -105,6 +130,10 @@ def main(args):
                 print "\tuuid: '" + label['label']['id'] + "'"
                 print "})"
                 labels += "MERGE (" + rid + ")-[:HAS_LABEL]->(" + lid + ")\n"
+
+        if len(performances) > 0:
+            print "\n// performances"
+            print performances
 
         if len(labels) > 0:
             print "\n// labels"

@@ -1132,21 +1132,21 @@ MERGE
 	(session_0f8c3b265704:Session{
 		uuid:'10202790-4ffd-4f8a-a3b5-0f8c3b265704',
 		name:'Kind of Blue: Miles Davis Sextet',
-		date:'1959-03-02',
+		dates: ['1959-03-02'],
 		lordisco: ['D1596', 'D1597'],
 		type:'recording session'})
 MERGE
 	(session_2f5a658d2f51:Session{
 		uuid:'b91a5e28-d4f8-4c83-b9f3-2f5a658d2f51',
 		name:'Kind of Blue: Miles Davis Sextet',
-		date:'1959-04-22',
+		dates: ['1959-04-22'],
 		lordisco: ['D1599'],
 		type:'recording session'})
 MERGE
 	(session_793d44668bf0:Session{
 		uuid:'cccc57ec-a06b-4566-8414-793d44668bf0',
 		name:'Miles Davis at The Robert Herridge Theater - The Sound of Miles Davis Live',
-		date:'1959-04-03',
+		dates: ['1959-04-03'],
 		lordisco: ['D1598'],
 		type:'television appearance',
 		links: ['http://www.dailymotion.com/video/xmo2xe_miles-davis-the-cool-jazz-sound_shortfilms']})

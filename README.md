@@ -6,6 +6,8 @@ jazz discography represented as a neo4j graph
 1. Can you produce robust jazz discographies using musicbrainz.com?
 
   See: [Model MusicBrainz Release](https://musicbrainz.org/release/e8bb8ea9-b4af-4cc7-b209-f6a9d6c86eea)
+  
+  ![Alt text](https://github.com/bmckinney/jazz-graph/blob/master/screenshots/model-release.png?raw=true "Model Release")
 
 2. Can you infer recording sessions from discographies using musicbrainz and a labeled property graph?
 

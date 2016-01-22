@@ -1,7 +1,15 @@
 # jazz-graph
 jazz discography represented as a neo4j graph
 
+## Questions
 
+1. Can you produce robust jazz discographies using musicbrainz.com?
+
+  See: [Model MusicBrainz Release](https://musicbrainz.org/release/e8bb8ea9-b4af-4cc7-b209-f6a9d6c86eea)
+
+2. Can you infer recording sessions from discographies using musicbrainz and a labeled property graph?
+
+## Example cypher queries
 
 #### What are the songs and performers on "The Roy Haynes Trio" release?
 ```

@@ -29,8 +29,19 @@ return DISTINCT p.name, p.begin, plc.name;
 
 #### What bassists did Roy Haynes perform the most with?
 ```
-MATCH (person:Person)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['bass'] } ]->(performance:Performance)<-[:PARTICIPATED_IN]-(roy:Person {name: "Roy Haynes"}) 
+MATCH (person:Person)-[part:PARTICIPATED_IN]->(performance:Performance)<-[:PARTICIPATED_IN]-(roy:Person {name: "Roy Haynes"})
+WHERE HAS (part.instruments) 
+AND "bass" in part.instruments
 RETURN person.name as bassist, count(*) AS performance
-ORDER BY performance DESC
 ```
 ![Alt text](https://github.com/bmckinney/jazz-graph/blob/master/screenshots/haynes-bassists.png?raw=true "Roy Haynes Bassists")
+
+#### What bassists did Roy Haynes perform the most with in 1960?
+```
+MATCH (person:Person)-[part:PARTICIPATED_IN]->(performance:Performance)<-[:PARTICIPATED_IN]-(roy:Person {name: "Roy Haynes"})
+WHERE HAS (part.instruments) 
+AND "bass" in part.instruments
+AND performance.begin STARTS WITH '1960'
+RETURN person.name as bassist, count(*) AS performance
+```
+![Alt text](https://github.com/bmckinney/jazz-graph/blob/master/screenshots/haynes-bassists-1960.png?raw=true "Roy Haynes Bassists -1960")

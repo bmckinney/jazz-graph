@@ -50,7 +50,7 @@ def main(args):
         print "\nMERGE (" + rid + ":Release{ uuid: '" + rel['id'] + "' })"
 
         if "title" in rel:
-            print "SET " + rid + ".name = '" + rel['title'] + "'"
+            print "SET " + rid + ".name = '" + rel['title'].replace("'", "\\'") + "'"
 
         if "disambiguation" in rel:
             print "SET " + rid + ".disambiguation = '" + rel['disambiguation'] + "'"

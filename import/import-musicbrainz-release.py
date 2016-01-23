@@ -62,151 +62,163 @@ def main(args):
             print "SET " + rid + ".date = '" + rel['date'] + "'"
 
         if 'medium-list' in rel:
-            if 'format' in rel['medium-list'][0]:
-                print "SET " + rid + ".format = '" + rel['medium-list'][0]['format'] + "'"
 
-            if 'track-list' in rel['medium-list'][0]:
-                for track in rel['medium-list'][0]['track-list']:
-                    if 'recording' in track:
-                        props = ''
-                        if 'number' in track:
-                            props += "name: '" + track['number'] + "'"
-                        if 'position' in track:
+            # multiple medium lists where multi-CD, etc.
+            for medium in rel['medium-list']:
+
+                if 'format' in medium:
+                    print "SET " + rid + ".format = '" + medium['format'] + "'"
+
+                if 'track-list' in medium:
+                    for track in medium['track-list']:
+                        if 'recording' in track:
+                            props = ''
+                            if 'number' in track:
+                                props += "name: '" + track['number'] + "'"
+                            if 'position' in track:
+                                if len(props) > 0:
+                                    props += ", "
+                                props += "sequence: " + track['position']
                             if len(props) > 0:
-                                props += ", "
-                            props += "sequence: " + track['position']
-                        if len(props) > 0:
-                            props = "{" + props + "}"
+                                props = "{" + props + "}"
 
-                        # get recordings (performances)
-                        rec = m.get_recording_by_id(track['recording']['id'],
-                                                    ["artist-rels", "work-rels", "place-rels", "area-rels"])['recording']
+                            # get recordings (performances)
+                            rec = m.get_recording_by_id(track['recording']['id'],
+                                                        ["artist-rels", "work-rels", "place-rels", "area-rels"])['recording']
 
-                        # add to list of performance uuids
-                        performance_list.append(track['recording']['id'])
+                            # add to list of performance uuids
+                            performance_list.append(track['recording']['id'])
 
-                        perfid = "perf_" + track['recording']['id'].rsplit('-', 1)[1]
+                            perfid = "perf_" + track['recording']['id'].rsplit('-', 1)[1]
 
-                        if "artist-relation-list" in rec:
+                            if "artist-relation-list" in rec:
 
-                            # artist dictionaries
-                            ad = []
+                                # artist dictionaries
+                                ad = []
 
-                            for artist in rec['artist-relation-list']:
-                                if 'artist' in artist:
-                                    artist_list.append(artist['artist']['id'])
-                                    tmp_artist_id = artist['artist']['id']
+                                for artist in rec['artist-relation-list']:
+                                    if 'artist' in artist:
+                                        artist_list.append(artist['artist']['id'])
+                                        tmp_artist_id = artist['artist']['id']
 
-                                    tmp_dict = {}
-                                    has_artist = False
-                                    for d in ad:
-                                        if d["artist"] == "person_" + tmp_artist_id.rsplit('-', 1)[1]:
-                                            has_artist = True
-                                            tmp_dict = d
-                                            break
+                                        tmp_dict = {}
+                                        has_artist = False
+                                        for d in ad:
+                                            if d["artist"] == "person_" + tmp_artist_id.rsplit('-', 1)[1]:
+                                                has_artist = True
+                                                tmp_dict = d
+                                                break
 
-                                    if not has_artist:
-                                        tmp_dict = {"artist": "person_" + tmp_artist_id.rsplit('-', 1)[1],
-                                                    "roles": [], "instruments": []}
-                                        ad.append(tmp_dict)
+                                        if not has_artist:
+                                            tmp_dict = {"artist": "person_" + tmp_artist_id.rsplit('-', 1)[1],
+                                                        "roles": [], "instruments": []}
+                                            ad.append(tmp_dict)
 
-                                if 'type' in artist:
-                                    # types: instrument, producer, recording, vocal
-                                    if artist['type'] == 'instrument':
-                                        if 'attribute-list' in artist:
-                                            instruments = []
-                                            for a in artist['attribute-list']:
-                                                instruments.append(a)
-                                                tmp_dict["instruments"].append(a)
-                                                has_musician = False
-                                                for r in tmp_dict["roles"]:
-                                                    if r == "musician":
-                                                        has_musician = True
-                                                        break
-                                                if not has_musician:
-                                                    tmp_dict["roles"].append("musician")
+                                    if 'type' in artist:
+                                        # types: instrument, producer, recording, vocal
+                                        if artist['type'] == 'instrument':
+                                            if 'attribute-list' in artist:
+                                                instruments = []
+                                                for a in artist['attribute-list']:
+                                                    instruments.append(a)
+                                                    tmp_dict["instruments"].append(a)
+                                                    has_musician = False
+                                                    for r in tmp_dict["roles"]:
+                                                        if r == "musician":
+                                                            has_musician = True
+                                                            break
+                                                    if not has_musician:
+                                                        tmp_dict["roles"].append("musician")
 
-                                    if artist['type'] == 'producer':
-                                        tmp_dict["roles"].append("producer")
+                                        if artist['type'] == 'producer':
+                                            tmp_dict["roles"].append("producer")
 
-                                    if artist['type'] == 'vocal':
-                                        tmp_dict["roles"].append("singer")
+                                        if artist['type'] == 'vocal':
+                                            tmp_dict["roles"].append("singer")
 
-                                    if artist['type'] == 'recording':
-                                        tmp_dict["roles"].append("recording engineer")
+                                        if artist['type'] == 'recording':
+                                            tmp_dict["roles"].append("recording engineer")
 
-                            # print dictionaries
-                            for d in ad:
-                                participation += artist_participation(d, perfid)
+                                # print dictionaries
+                                for d in ad:
+                                    participation += artist_participation(d, perfid)
 
-                        # create list of works uuids
-                        if "work-relation-list" in rec:
-                            for work in rec['work-relation-list']:
-                                if 'work' in work:
-                                    works_list.append(work['work']['id'])
+                            # create list of works uuids
+                            if "work-relation-list" in rec:
+                                for work in rec['work-relation-list']:
+                                    if 'work' in work:
+                                        works_list.append(work['work']['id'])
 
-                        # create list of place uuids
-                        place_begin_date = ''
-                        place_end_date = ''
-                        if "place-relation-list" in rec:
-                            for place in rec['place-relation-list']:
-                                if 'begin' in place:
-                                    place_begin_date = place['begin']
-                                if 'end' in place:
-                                    place_end_date = place['end']
-                                if 'place' in place:
-                                    place_id = place['place']['id']
-                                    if place['place']['id'] not in place_list:
+                            # create list of place uuids
+                            place_begin_date = ''
+                            place_end_date = ''
+                            if "place-relation-list" in rec:
+                                for place in rec['place-relation-list']:
+                                    if 'begin' in place:
+                                        place_begin_date = place['begin']
+                                    if 'end' in place:
+                                        place_end_date = place['end']
+                                    if 'place' in place:
+                                        place_id = place['place']['id']
+                                        if place['place']['id'] not in place_list:
 
-                                        address = place['place']['address']
-                                        geolocator = Nominatim()
-                                        location = geolocator.geocode(address)
-                                        # print "ADDRESS: " + location.address
-                                        plc = "place_" + place_id.rsplit('-', 1)[1]
-                                        place_nodes += "\nMERGE (" + plc + ":Place{ uuid: '" + place_id + "' })\n"
-                                        place_nodes += "SET " + plc + ".name = '" + place['place']['name'] + "'\n"
-                                        place_nodes += "SET " + plc + ".address = '" + location.address + "'\n"
-                                        place_nodes += "SET " + plc + ".lat = '" + repr(location.latitude) + "'\n"
-                                        place_nodes += "SET " + plc + ".lng = '" + repr(location.longitude) + "'\n"
-                                        place_nodes += "SET " + plc + ".source = 'musicbrainz.org'\n"
+                                            plc = "place_" + place_id.rsplit('-', 1)[1]
+                                            place_nodes += "\nMERGE (" + plc + ":Place{ uuid: '" + place_id + "' })\n"
+                                            place_nodes += "SET " + plc + ".name = '" + place['place']['name'] + "'\n"
 
-                                        place_list.append(place_id)
+                                            if 'address' in place['place']:
+                                                #print "PLACE: " + place['place']['address']
+                                                address = place['place']['address']
 
-                                    place_rels += "MERGE (" + perfid + ")-[:HAS_PLACE { "
-                                    place_rels += "type: '" + place['type'] + "'"
-                                    if len(place_begin_date) > 0:
-                                        place_rels += ", begin: '" + place_begin_date + "'"
-                                    if len(place_end_date) > 0:
-                                        place_rels += ", end: '" + place_end_date + "'"
-                                    place_rels += " }]->"
-                                    place_rels += "(place_" + place_id.rsplit('-', 1)[1] + ")\n"
+                                                # try to expand the address with geopy
+                                                geolocator = Nominatim()
+                                                location = geolocator.geocode(address)
+                                                if location is not None:
+                                                    place_nodes += "SET " + plc + ".address = '" + location.address + "'\n"
+                                                    place_nodes += "SET " + plc + ".lat = '" + repr(location.latitude) + "'\n"
+                                                    place_nodes += "SET " + plc + ".lng = '" + repr(location.longitude) + "'\n"
+                                                else:
+                                                    place_nodes += "SET " + plc + ".address = '" + address + "'\n"
 
-                        # create list of place uuids for musicbrainz areas
-                        if "area-relation-list" in rec:
-                            for area in rec['area-relation-list']:
-                                if 'begin' in area:
-                                    place_begin_date = area['begin']
-                                if 'end' in area:
-                                    place_end_date = area['end']
-                                if 'area' in area:
-                                    area_id = area['area']['id']
-                                    # avoid dupes
-                                    if area['area']['id'] not in area_list:
+                                            place_nodes += "SET " + plc + ".source = 'musicbrainz.org'\n"
 
-                                        plc = "place_" + area_id.rsplit('-', 1)[1]
-                                        place_nodes += "\nMERGE (" + plc + ":Place{ uuid: '" + area_id + "' })\n"
-                                        place_nodes += "SET " + plc + ".name = '" + area['area']['name'] + "'\n"
-                                        place_nodes += "SET " + plc + ".source = 'musicbrainz.org'\n"
-                                        area_list.append(area_id)
+                                            place_list.append(place_id)
 
-                                    place_rels += "MERGE (" + perfid + ")-[:HAS_PLACE { "
-                                    place_rels += "type: '" + area['type'] + "'"
-                                    if len(place_begin_date) > 0:
-                                        place_rels += ", begin: '" + place_begin_date + "'"
-                                    if len(place_end_date) > 0:
-                                        place_rels += ", end: '" + place_end_date + "'"
-                                    place_rels += " }]->"
-                                    place_rels += "(place_" + area_id.rsplit('-', 1)[1] + ")\n"
+                                        place_rels += "MERGE (" + perfid + ")-[:HAS_PLACE { "
+                                        place_rels += "type: '" + place['type'] + "'"
+                                        if len(place_begin_date) > 0:
+                                            place_rels += ", begin: '" + place_begin_date + "'"
+                                        if len(place_end_date) > 0:
+                                            place_rels += ", end: '" + place_end_date + "'"
+                                        place_rels += " }]->"
+                                        place_rels += "(place_" + place_id.rsplit('-', 1)[1] + ")\n"
+
+                            # create list of place uuids for musicbrainz areas
+                            if "area-relation-list" in rec:
+                                for area in rec['area-relation-list']:
+                                    if 'begin' in area:
+                                        place_begin_date = area['begin']
+                                    if 'end' in area:
+                                        place_end_date = area['end']
+                                    if 'area' in area:
+                                        area_id = area['area']['id']
+                                        # avoid dupes
+                                        if area['area']['id'] not in area_list:
+
+                                            plc = "place_" + area_id.rsplit('-', 1)[1]
+                                            place_nodes += "\nMERGE (" + plc + ":Place{ uuid: '" + area_id + "' })\n"
+                                            place_nodes += "SET " + plc + ".name = '" + area['area']['name'] + "'\n"
+                                            place_nodes += "SET " + plc + ".source = 'musicbrainz.org'\n"
+                                            area_list.append(area_id)
+
+                                        place_rels += "MERGE (" + perfid + ")-[:HAS_PLACE { "
+                                        place_rels += "type: '" + area['type'] + "'"
+                                        if len(place_begin_date) > 0:
+                                            place_rels += ", begin: '" + place_begin_date + "'"
+                                        if len(place_end_date) > 0:
+                                            place_rels += ", end: '" + place_end_date + "'"
+                                        place_rels += " }]->"
+                                        place_rels += "(place_" + area_id.rsplit('-', 1)[1] + ")\n"
 
                         performances += "\nMERGE (" + perfid + ":Performance{ uuid: '" + rec['id'] + "' })\n"
                         if 'title' in rec:
@@ -234,8 +246,9 @@ def main(args):
                         tracks += "MERGE (" + rid + ")-[:HAS_TRACK " + props + "]->(" + tid + ")\n"
 
         if 'label-info-list' in rel:
-            if 'catalog-number' in rel['label-info-list'][0]:
-                print "SET " + rid + ".discode = '" + rel['label-info-list'][0]['catalog-number'] + "'"
+            if len(rel['label-info-list']) > 0:
+                if 'catalog-number' in rel['label-info-list'][0]:
+                    print "SET " + rid + ".discode = '" + rel['label-info-list'][0]['catalog-number'] + "'"
 
         # leader relationship
         # if 'artist-credit' in rel:

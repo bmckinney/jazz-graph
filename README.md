@@ -53,3 +53,10 @@ RETURN DISTINCT hp.begin as dates, place.name as place, count(performance) as pe
 ORDER BY hp.begin ASC
 ```
 ![Alt text](https://github.com/bmckinney/jazz-graph/blob/master/screenshots/haynes-van-gelder.png?raw=true "Roy Haynes Van Gelder Studio")
+
+#### What Monk compositions has Roy Haynes performed?
+```
+MATCH (person:Person {name: "Roy Haynes"})-[part:PARTICIPATED_IN]->(performance:Performance)-[:PERFORMANCE_OF]->(work:Work)<-[:COMPOSED]-(composer:Person {name: "Thelonious Monk"})
+RETURN DISTINCT work.name
+```
+

@@ -45,3 +45,11 @@ AND performance.begin STARTS WITH '1960'
 RETURN person.name as bassist, count(*) AS performance
 ```
 ![Alt text](https://github.com/bmckinney/jazz-graph/blob/master/screenshots/haynes-bassists-1960.png?raw=true "Roy Haynes Bassists -1960")
+
+#### When did Roy Haynes record at Rudy Van Gelder's studio and how many performances?
+```
+MATCH (person:Person {name: "Roy Haynes"})-[part:PARTICIPATED_IN]->(performance:Performance)-[hp:HAS_PLACE]->(place:Place {name: "Van Gelder Studio"}) 
+RETURN DISTINCT hp.begin as dates, place.name as place, count(performance) as performances
+ORDER BY hp.begin ASC
+```
+![Alt text](https://github.com/bmckinney/jazz-graph/blob/master/screenshots/haynes-van-gelder.png?raw=true "Roy Haynes Van Gelder Studio")

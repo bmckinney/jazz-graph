@@ -26,3 +26,11 @@ MATCH (a:Person{ name: "Roy Haynes"})-[:PARTICIPATED_IN]->(p:Performance{begin: 
 return DISTINCT p.name, p.begin, plc.name;
 ```
 ![Alt text](https://github.com/bmckinney/jazz-graph/blob/master/screenshots/haynes-trio-scullers-session.png?raw=true "Roy Haynes Trio Scullers Session")
+
+#### What bassists did Roy Haynes perform the most with?
+```
+MATCH (person:Person)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['bass'] } ]->(performance:Performance)<-[:PARTICIPATED_IN]-(roy:Person {name: "Roy Haynes"}) 
+RETURN person.name as bassist, count(*) AS performance
+ORDER BY performance DESC
+```
+![Alt text](https://github.com/bmckinney/jazz-graph/blob/master/screenshots/haynes-bassists.png?raw=true "Roy Haynes Bassists")

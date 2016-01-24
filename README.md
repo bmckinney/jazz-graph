@@ -59,4 +59,15 @@ ORDER BY hp.begin ASC
 MATCH (person:Person {name: "Roy Haynes"})-[part:PARTICIPATED_IN]->(performance:Performance)-[:PERFORMANCE_OF]->(work:Work)<-[:COMPOSED]-(composer:Person {name: "Thelonious Monk"})
 RETURN DISTINCT work.name
 ```
-
+#### What trios has Roy Haynes performed in and how often?
+```
+match (person:Person)-[part:PARTICIPATED_IN]->(perf:Performance)
+where has (part.roles) and "musician" in part.roles
+with person, perf
+order by person.name desc
+with perf, collect(person.name) as person_coll
+where "Roy Haynes" in person_coll and length(person_coll) = 3
+with count(perf) as performances, person_coll as trio
+order by performances desc
+return distinct trio, performances
+```

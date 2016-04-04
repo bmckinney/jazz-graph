@@ -2,10 +2,7 @@
 
 import sys
 import musicbrainzngs as m
-import requests.packages.urllib3
 from geopy.geocoders import Nominatim
-
-requests.packages.urllib3.disable_warnings()
 
 
 def main(args):
@@ -145,7 +142,7 @@ def main(args):
 
         # performance-place relationships
         for workid in works_list:
-            place_rels += "MERGE (" + "perf_" + event_id + "_" + workid.rsplit('-', 1)[1] + ")-[HAS_PLACE { "
+            place_rels += "MERGE (" + "perf_" + event_id + "_" + workid.rsplit('-', 1)[1] + ")-[:HAS_PLACE { "
             place_rels += "type: 'performed at', begin: '" + rel['life-span']['begin'] + "', end: '" + rel['life-span']['end'] + "' }]->"
             place_rels += "(" + plc + ")\n"
 

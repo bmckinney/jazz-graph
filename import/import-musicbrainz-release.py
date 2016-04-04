@@ -2,10 +2,7 @@
 
 import sys
 import musicbrainzngs as m
-import requests.packages.urllib3
 from geopy.geocoders import Nominatim
-
-requests.packages.urllib3.disable_warnings()
 
 
 def main(args):

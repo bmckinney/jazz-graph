@@ -202,6 +202,14 @@ MERGE (perf_54c6e531f30e_7d5036a3f70a)-[:HAS_PLACE { type: 'performed at', begin
 MERGE (perf_54c6e531f30e_e130f06c5ade)-[:HAS_PLACE { type: 'performed at', begin: '1969-10-21', end: '1969-10-21' }]->(place_13c91aabaa00)
 
 
+// event->performance relationships
+MERGE (event_54c6e531f30e)-[:HAS_PERFORMANCE { begin: '1969-10-21', end: '1969-10-21' }]->(perf_54c6e531f30e_01c8b424d9a8)
+MERGE (event_54c6e531f30e)-[:HAS_PERFORMANCE { begin: '1969-10-21', end: '1969-10-21' }]->(perf_54c6e531f30e_4c065caef2be)
+MERGE (event_54c6e531f30e)-[:HAS_PERFORMANCE { begin: '1969-10-21', end: '1969-10-21' }]->(perf_54c6e531f30e_fcbfb1ba114f)
+MERGE (event_54c6e531f30e)-[:HAS_PERFORMANCE { begin: '1969-10-21', end: '1969-10-21' }]->(perf_54c6e531f30e_7d5036a3f70a)
+MERGE (event_54c6e531f30e)-[:HAS_PERFORMANCE { begin: '1969-10-21', end: '1969-10-21' }]->(perf_54c6e531f30e_e130f06c5ade)
+
+
 // event-performance participation
 MERGE (person_5b0bb4641cb9)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['vibraphone'] }]->(perf_54c6e531f30e_01c8b424d9a8)
 MERGE (person_5b0bb4641cb9)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['vibraphone'] }]->(perf_54c6e531f30e_4c065caef2be)

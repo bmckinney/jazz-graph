@@ -150,6 +150,13 @@ def main(args):
             place_rels += "type: 'performed at', begin: '" + rel['life-span']['begin'] + "', end: '" + rel['life-span']['end'] + "' }]->"
             place_rels += "(" + plc + ")\n"
 
+        # performance-event relationships
+        place_rels += "\n\n// event->performance relationships\n"
+        for workid in works_list:
+            place_rels += "MERGE (" + rid + ")-[:HAS_PERFORMANCE { "
+            place_rels += "begin: '" + rel['life-span']['begin'] + "', end: '" + rel['life-span']['end'] + "' }]->"
+            place_rels += "(" + "perf_" + event_id + "_" + workid.rsplit('-', 1)[1] + ")\n"
+
         if len(artist_list) > 0:
             print_artist_cypher(set(artist_list))
 

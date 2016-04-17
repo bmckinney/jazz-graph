@@ -83,6 +83,10 @@ def main(args):
                             rec = m.get_recording_by_id(track['recording']['id'],
                                                         ["artist-rels", "work-rels", "place-rels", "area-rels"])['recording']
 
+                            # debug
+                            # for key, value in rec.iteritems():
+                            #     print key, value
+
                             # add to list of performance uuids
                             performance_list.append(track['recording']['id'])
 
@@ -499,7 +503,12 @@ def print_work_cypher(uuid_list, perf_list, artist_list):
                     if rec['target'] in perf_list:
                         perfid = "perf_" + rec['target'].rsplit('-', 1)[1]
                         wid = "work_" + uuid.rsplit('-', 1)[1]
-                        performances += "MERGE (" + perfid + ")-[:PERFORMANCE_OF]->(" + wid + ")\n"
+                        is_medley = ""
+                        if 'attribute-list' in rec:
+                            for attrib in rec['attribute-list']:
+                                if attrib == 'medley':
+                                    is_medley = " {medley: true}"
+                        performances += "MERGE (" + perfid + ")-[:PERFORMANCE_OF" + is_medley + "]->(" + wid + ")\n"
 
     # 1 - artist/composer nodes
     if len(composer_list) > 0:

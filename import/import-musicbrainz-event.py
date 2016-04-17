@@ -70,16 +70,20 @@ def main(args):
                     place_id = place['place']['id']
                     if place['place']['id'] not in place_list:
 
-                        address = place['place']['address']
-                        geolocator = Nominatim()
-                        location = geolocator.geocode(address)
-                        # print "ADDRESS: " + location.address
                         plc = "place_" + place_id.rsplit('-', 1)[1]
                         place_nodes += "\nMERGE (" + plc + ":Place{ uuid: '" + place_id + "' })\n"
                         place_nodes += "SET " + plc + ".name = '" + place['place']['name'] + "'\n"
-                        place_nodes += "SET " + plc + ".address = '" + location.address + "'\n"
-                        place_nodes += "SET " + plc + ".lat = '" + repr(location.latitude) + "'\n"
-                        place_nodes += "SET " + plc + ".lng = '" + repr(location.longitude) + "'\n"
+
+                        # if there's an address, add it and attempt to get lat/long
+                        if 'address' in place['place']:
+                            address = place['place']['address']
+                            geolocator = Nominatim()
+                            location = geolocator.geocode(address)
+                            # print "ADDRESS: " + location.address
+                            place_nodes += "SET " + plc + ".address = '" + location.address + "'\n"
+                            place_nodes += "SET " + plc + ".lat = '" + repr(location.latitude) + "'\n"
+                            place_nodes += "SET " + plc + ".lng = '" + repr(location.longitude) + "'\n"
+
                         place_nodes += "SET " + plc + ".source = 'musicbrainz.org'\n"
 
                         place_list.append(place_id)

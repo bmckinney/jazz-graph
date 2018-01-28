@@ -3,6 +3,7 @@
 import sys
 import musicbrainzngs as m
 from geopy.geocoders import Nominatim
+from pprint import pprint
 
 
 def main(args):
@@ -261,20 +262,22 @@ def main(args):
         if 'url-relation-list' in rel:
 
             for url in rel['url-relation-list']:
+                url_target = url['target']
+                url_target = url_target.replace("'", "%27")
                 if url['type'] == "wikipedia":
-                    print "SET " + rid + ".wikipedia = '" + url['target'] + "'"
+                    print "SET " + rid + ".wikipedia = '" + url_target + "'"
                 if url['type'] == "wikidata":
-                    print "SET " + rid + ".wikidata = '" + url['target'] + "'"
+                    print "SET " + rid + ".wikidata = '" + url_target + "'"
                 if url['type'] == "VIAF":
-                    print "SET " + rid + ".viaf = '" + url['target'] + "'"
+                    print "SET " + rid + ".viaf = '" + url_target + "'"
                 if url['type'] == "IMDb":
-                    print "SET " + rid + ".imdb = '" + url['target'] + "'"
+                    print "SET " + rid + ".imdb = '" + url_target + "'"
                 if url['type'] == "discogs":
-                    print "SET " + rid + ".discogs = '" + url['target'] + "'"
+                    print "SET " + rid + ".discogs = '" + url_target + "'"
                 if url['type'] == "allmusic":
-                    print "SET " + rid + ".allmusic = '" + url['target'] + "'"
+                    print "SET " + rid + ".allmusic = '" + url_target + "'"
                 if url['type'] == "BBC Music page":
-                    print "SET " + rid + ".bbc = '" + url['target'] + "'"
+                    print "SET " + rid + ".bbc = '" + url_target + "'"
 
         print "SET " + rid + ".musicbrainz = 'http://musicbrainz.org/release/" + rel['id'] + "'"
         print "SET " + rid + ".source = 'musicbrainz.org'"
@@ -379,24 +382,26 @@ def print_artist_cypher(uuid_list):
             odlist = []
 
             for url in artist['url-relation-list']:
+                url_target = url['target']
+                url_target = url_target.replace("'", "%27")
                 if url['type'] == "wikipedia":
-                    print "SET " + aid + ".wikipedia = '" + url['target'] + "'"
+                    print "SET " + aid + ".wikipedia = '" + url_target + "'"
                 if url['type'] == "wikidata":
-                    print "SET " + aid + ".wikidata = '" + url['target'] + "'"
+                    print "SET " + aid + ".wikidata = '" + url_target + "'"
                 if url['type'] == "VIAF":
-                    print "SET " + aid + ".viaf = '" + url['target'] + "'"
+                    print "SET " + aid + ".viaf = '" + url_target + "'"
                 if url['type'] == "IMDb":
-                    print "SET " + aid + ".imdb = '" + url['target'] + "'"
+                    print "SET " + aid + ".imdb = '" + url_target + "'"
                 if url['type'] == "discogs":
-                    print "SET " + aid + ".discogs = '" + url['target'] + "'"
+                    print "SET " + aid + ".discogs = '" + url_target + "'"
                 if url['type'] == "allmusic":
-                    print "SET " + aid + ".allmusic = '" + url['target'] + "'"
+                    print "SET " + aid + ".allmusic = '" + url_target + "'"
                 if url['type'] == "BBC Music page":
-                    print "SET " + aid + ".bbc = '" + url['target'] + "'"
+                    print "SET " + aid + ".bbc = '" + url_target + "'"
                 if url['type'] == "discography":
-                    dlist.append(url['target'])
+                    dlist.append(url_target)
                 if url['type'] == "other databases":
-                    odlist.append(url['target'])
+                    odlist.append(url_target)
 
             if len(dlist) > 0:
                 print "SET " + aid + ".discographies = [" + ', '.join("'" + p.encode('utf-8').strip() +
@@ -424,6 +429,8 @@ def print_work_cypher(uuid_list, perf_list, artist_list):
     composer_list = []
 
     print "// works"
+    # dedupe in case of medleys
+    uuid_list = list(set(uuid_list))
 
     for index, uuid in enumerate(uuid_list, start=1):
 
@@ -475,18 +482,20 @@ def print_work_cypher(uuid_list, perf_list, artist_list):
             odlist = []
 
             for url in work['url-relation-list']:
+                url_target = url['target']
+                url_target = url_target.replace("'", "%27")
                 if url['type'] == "wikipedia":
-                    cypher += "SET " + wid + ".wikipedia = '" + url['target'] + "'\n"
+                    cypher += "SET " + wid + ".wikipedia = '" + url_target + "'\n"
                 if url['type'] == "wikidata":
-                    cypher += "SET " + wid + ".wikidata = '" + url['target'] + "'\n"
+                    cypher += "SET " + wid + ".wikidata = '" + url_target + "'\n"
                 if url['type'] == "discogs":
-                    cypher += "SET " + wid + ".discogs = '" + url['target'] + "'\n"
+                    cypher += "SET " + wid + ".discogs = '" + url_target + "'\n"
                 if url['type'] == "allmusic":
-                    cypher += "SET " + wid + ".allmusic = '" + url['target'] + "'\n"
+                    cypher += "SET " + wid + ".allmusic = '" + url_target + "'\n"
                 if url['type'] == "BBC Music page":
-                    cypher += "SET " + wid + ".bbc = '" + url['target'] + "'\n"
+                    cypher += "SET " + wid + ".bbc = '" + url_target + "'\n"
                 if url['type'] == "other databases":
-                    odlist.append(url['target'])
+                    odlist.append(url_target)
 
             if len(odlist) > 0:
                 cypher += "SET " + wid + ".databases = [" + ', '.join("'" + p.encode('utf-8').strip() +

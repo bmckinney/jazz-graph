@@ -29,7 +29,7 @@ def main(args):
         rel = m.get_event_by_id(uuid, ["artist-rels", "work-rels", "place-rels", "area-rels"])['event']
 
         # debug
-        #for key, value in rel.iteritems():
+        # for key, value in rel.iteritems():
         #    print key, value
 
         # convert set list to a list of work ids

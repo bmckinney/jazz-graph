@@ -172,7 +172,7 @@ def main(args):
                                                 address = place['place']['address']
 
                                                 # try to expand the address with geopy
-                                                geolocator = Nominatim()
+                                                geolocator = Nominatim(user_agent="mckinney.sw@gmail.com")
                                                 location = geolocator.geocode(address)
                                                 if location is not None:
                                                     place_nodes += "SET " + plc + ".address = '" + location.address + "'\n"

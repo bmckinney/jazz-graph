@@ -34,6 +34,7 @@ cypher_batch4=(
  screamin-the-blues-data
  the-great-kai-data
  we-three-data
+ the-blues-and-the-abstract-truth
 )
 
 echo starting imports

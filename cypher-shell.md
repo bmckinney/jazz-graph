@@ -1,4 +1,4 @@
-# cypher-sell
+# cypher-shell
 
 See: https://neo4j.com/docs/operations-manual/current/tools/cypher-shell/
 

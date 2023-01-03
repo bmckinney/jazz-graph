@@ -3,7 +3,6 @@
 import sys
 import musicbrainzngs as m
 from geopy.geocoders import Nominatim
-from pprint import pprint
 
 
 def main(args):
@@ -24,7 +23,7 @@ def main(args):
     works_list = []
     performance_list = []
 
-    print "// releases"
+    print ("// releases")
 
     for index, uuid in enumerate(args, start=1):
 
@@ -45,19 +44,19 @@ def main(args):
                     artist_list.append(artist['artist']['id'])
             # print_artist_cypher(artist_list)
 
-        print "\nMERGE (" + rid + ":Release{ uuid: '" + rel['id'] + "' })"
+        print ("\nMERGE (" + rid + ":Release{ uuid: '" + rel['id'] + "' })")
 
         if "title" in rel:
-            print "SET " + rid + ".name = '" + rel['title'].replace("'", "\\'") + "'"
+            print ("SET " + rid + ".name = '" + rel['title'].replace("'", "\\'") + "'")
 
         if "disambiguation" in rel:
-            print "SET " + rid + ".disambiguation = '" + rel['disambiguation'] + "'"
+            print ("SET " + rid + ".disambiguation = '" + rel['disambiguation'] + "'")
 
         if "country" in rel:
-            print "SET " + rid + ".country = '" + rel['country'] + "'"
+            print ("SET " + rid + ".country = '" + rel['country'] + "'")
 
         if "date" in rel:
-            print "SET " + rid + ".date = '" + rel['date'] + "'"
+            print ("SET " + rid + ".date = '" + rel['date'] + "'")
 
         if 'medium-list' in rel:
 
@@ -65,7 +64,7 @@ def main(args):
             for medium in rel['medium-list']:
 
                 if 'format' in medium:
-                    print "SET " + rid + ".format = '" + medium['format'] + "'"
+                    print ("SET " + rid + ".format = '" + medium['format'] + "'")
 
                 if 'track-list' in medium:
                     for track in medium['track-list']:
@@ -250,7 +249,7 @@ def main(args):
         if 'label-info-list' in rel:
             if len(rel['label-info-list']) > 0:
                 if 'catalog-number' in rel['label-info-list'][0]:
-                    print "SET " + rid + ".discode = '" + rel['label-info-list'][0]['catalog-number'] + "'"
+                    print ("SET " + rid + ".discode = '" + rel['label-info-list'][0]['catalog-number'] + "'")
 
         # leader relationship
         # if 'artist-credit' in rel:
@@ -265,23 +264,23 @@ def main(args):
                 url_target = url['target']
                 url_target = url_target.replace("'", "%27")
                 if url['type'] == "wikipedia":
-                    print "SET " + rid + ".wikipedia = '" + url_target + "'"
+                    print ("SET " + rid + ".wikipedia = '" + url_target + "'")
                 if url['type'] == "wikidata":
-                    print "SET " + rid + ".wikidata = '" + url_target + "'"
+                    print ("SET " + rid + ".wikidata = '" + url_target + "'")
                 if url['type'] == "VIAF":
-                    print "SET " + rid + ".viaf = '" + url_target + "'"
+                    print ("SET " + rid + ".viaf = '" + url_target + "'")
                 if url['type'] == "IMDb":
-                    print "SET " + rid + ".imdb = '" + url_target + "'"
+                    print ("SET " + rid + ".imdb = '" + url_target + "'")
                 if url['type'] == "discogs":
-                    print "SET " + rid + ".discogs = '" + url_target + "'"
+                    print ("SET " + rid + ".discogs = '" + url_target + "'")
                 if url['type'] == "allmusic":
-                    print "SET " + rid + ".allmusic = '" + url_target + "'"
+                    print ("SET " + rid + ".allmusic = '" + url_target + "'")
                 if url['type'] == "BBC Music page":
-                    print "SET " + rid + ".bbc = '" + url_target + "'"
+                    print ("SET " + rid + ".bbc = '" + url_target + "'")
 
-        print "SET " + rid + ".musicbrainz = 'http://musicbrainz.org/release/" + rel['id'] + "'"
-        print "SET " + rid + ".source = 'musicbrainz.org'"
-        print "SET " + rid + ".timestamp = timestamp()"
+        print ("SET " + rid + ".musicbrainz = 'http://musicbrainz.org/release/" + rel['id'] + "'")
+        print ("SET " + rid + ".source = 'musicbrainz.org'")
+        print ("SET " + rid + ".timestamp = timestamp()")
 
         if len(artist_list) > 0:
             print_artist_cypher(set(artist_list))
@@ -289,39 +288,39 @@ def main(args):
         if 'label-info-list' in rel:
             for label in rel['label-info-list']:
                 lid = "label_" + label['label']['id'].rsplit('-', 1)[1]
-                print "// labels"
-                print "\nMERGE (" + lid + ":Label{ uuid: '" + label['label']['id'] + "' })"
-                print "SET " + lid + ".name= '" + label['label']['name'] + "'"
+                print ("// labels")
+                print ("\nMERGE (" + lid + ":Label{ uuid: '" + label['label']['id'] + "' })")
+                print ("SET " + lid + ".name= '" + label['label']['name'] + "'")
                 labels += "MERGE (" + rid + ")-[:HAS_LABEL]->(" + lid + ")\n"
 
         if len(performances) > 0:
-            print "\n// performances"
-            print performances
+            print ("\n// performances")
+            print (performances)
 
         if len(labels) > 0:
-            print "\n\n// labels"
-            print labels
+            print ("\n\n// labels")
+            print (labels)
 
         if len(tracks) > 0:
-            print "\n// tracks"
-            print tracks
+            print ("\n// tracks")
+            print (tracks)
 
         if len(leaders) > 0:
-            print "\n// leaders"
-            print leaders
+            print ("\n// leaders")
+            print (leaders)
 
         if works_list:
             print_work_cypher(works_list, performance_list, artist_list)
 
         if len(place_nodes) > 0:
-            print "\n// place nodes"
-            print place_nodes
+            print ("\n// place nodes")
+            print (place_nodes)
 
         if len(place_rels) > 0:
-            print "\n// place relationships"
-            print place_rels
+            print ("\n// place relationships")
+            print (place_rels)
 
-        print participation
+        print (participation)
 
 
 def print_artist_cypher(uuid_list):
@@ -338,23 +337,23 @@ def print_artist_cypher(uuid_list):
 
         aid = "person_" + artist['id'].rsplit('-', 1)[1]
 
-        print "\nMERGE (" + aid + ":Person{ uuid: '" + artist['id'] + "' }) "
+        print ("\nMERGE (" + aid + ":Person{ uuid: '" + artist['id'] + "' }) ")
 
         # name
         if "name" in artist:
-            print "SET " + aid + ".name = '" + artist['name'] + "'"
+            print ("SET " + aid + ".name = '" + artist['name'] + "'")
         # gender
         if "gender" in artist:
-            print "SET " + aid + ".gender = '" + artist['gender'] + "'"
+            print ("SET " + aid + ".gender = '" + artist['gender'] + "'")
         # sort name
         if "sort_name" in artist:
-            print "SET " + aid + ".sort_name = '" + artist['sort_name'] + "'"
+            print ("SET " + aid + ".sort_name = '" + artist['sort_name'] + "'")
         # disambiguation
         if "disambiguation" in artist:
-            print "SET " + aid + ".disambiguation = '" + artist['disambiguation'] + "'"
+            print ("SET " + aid + ".disambiguation = '" + artist['disambiguation'] + "'")
         # country
         if "country" in artist:
-            print "SET " + aid + ".country = '" + artist['country'] + "'"
+            print ("SET " + aid + ".country = '" + artist['country'] + "'")
         # birth date
         if 'life-span' in artist and 'begin' in artist['life-span']:
             "SET " + aid + ".birth_date = '" + artist['life-span']['begin'] + "'"
@@ -366,7 +365,7 @@ def print_artist_cypher(uuid_list):
             alist = []
             for a in artist['alias-list']:
                 alist.append(a['alias'])
-            "SET " + aid + ".aliases =  [" + ', '.join("'" + p.encode('utf-8').strip() + "'" for p in alist) + "]"
+            "SET " + aid + ".aliases =  [" + ', '.join("'" + p.strip() + "'" for p in alist) + "]"
         # tags
         if 'tag-list' in artist:
             tlist = []
@@ -374,7 +373,7 @@ def print_artist_cypher(uuid_list):
                 if int(tag['count']) > 1:
                     tlist.append(tag['name'])
             if len(tlist) > 0:
-                "SET " + aid + ".tags = [" + ', '.join("'" + p.encode('utf-8').strip() + "'" for p in tlist) + "]"
+                "SET " + aid + ".tags = [" + ', '.join("'" + p.strip() + "'" for p in tlist) + "]"
         # urls
         if 'url-relation-list' in artist:
 
@@ -385,40 +384,38 @@ def print_artist_cypher(uuid_list):
                 url_target = url['target']
                 url_target = url_target.replace("'", "%27")
                 if url['type'] == "wikipedia":
-                    print "SET " + aid + ".wikipedia = '" + url_target + "'"
+                    print ("SET " + aid + ".wikipedia = '" + url_target + "'")
                 if url['type'] == "wikidata":
-                    print "SET " + aid + ".wikidata = '" + url_target + "'"
+                    print ("SET " + aid + ".wikidata = '" + url_target + "'")
                 if url['type'] == "VIAF":
-                    print "SET " + aid + ".viaf = '" + url_target + "'"
+                    print ("SET " + aid + ".viaf = '" + url_target + "'")
                 if url['type'] == "IMDb":
-                    print "SET " + aid + ".imdb = '" + url_target + "'"
+                    print ("SET " + aid + ".imdb = '" + url_target + "'")
                 if url['type'] == "discogs":
-                    print "SET " + aid + ".discogs = '" + url_target + "'"
+                    print ("SET " + aid + ".discogs = '" + url_target + "'")
                 if url['type'] == "allmusic":
-                    print "SET " + aid + ".allmusic = '" + url_target + "'"
+                    print ("SET " + aid + ".allmusic = '" + url_target + "'")
                 if url['type'] == "BBC Music page":
-                    print "SET " + aid + ".bbc = '" + url_target + "'"
+                    print ("SET " + aid + ".bbc = '" + url_target + "'")
                 if url['type'] == "discography":
                     dlist.append(url_target)
                 if url['type'] == "other databases":
                     odlist.append(url_target)
 
             if len(dlist) > 0:
-                print "SET " + aid + ".discographies = [" + ', '.join("'" + p.encode('utf-8').strip() +
-                                                                      "'" for p in dlist) + "]"
+                print ("SET " + aid + ".discographies = [" + ', '.join("'" + p.strip() + "'" for p in dlist) + "]")
 
             if len(odlist) > 0:
-                print "SET " + aid + ".databases = [" + ', '.join("'" + p.encode('utf-8').strip() +
-                                                                  "'" for p in odlist) + "]"
+                print ("SET " + aid + ".databases = [" + ', '.join("'" + p.strip() + "'" for p in odlist) + "]")
 
-            print "SET " + aid + ".musicbrainz = 'https://musicbrainz.org/artist/" + artist['id'] + "'"
+            print ("SET " + aid + ".musicbrainz = 'https://musicbrainz.org/artist/" + artist['id'] + "'")
 
             if 'isni-list' in artist:
-                print "SET " + aid + ".isni_list = [" + ', '.join("'http://isni.org/isni/" + p.encode('utf-8').strip()
-                                                                  + "'" for p in artist['isni-list']) + "]"
+                print ("SET " + aid + ".isni_list = [" + ', '.join("'http://isni.org/isni/" + p.strip()
+                                                                  + "'" for p in artist['isni-list']) + "]")
 
-        print "SET " + aid + ".source = 'musicbrainz.org'"
-        print "SET " + aid + ".timestamp = timestamp()"
+        print ("SET " + aid + ".source = 'musicbrainz.org'")
+        print ("SET " + aid + ".timestamp = timestamp()")
 
 
 def print_work_cypher(uuid_list, perf_list, artist_list):
@@ -428,7 +425,7 @@ def print_work_cypher(uuid_list, perf_list, artist_list):
     performances = ''
     composer_list = []
 
-    print "// works"
+    print ("// works")
     # dedupe in case of medleys
     uuid_list = list(set(uuid_list))
 
@@ -524,44 +521,44 @@ def print_work_cypher(uuid_list, perf_list, artist_list):
         print_artist_cypher(set(composer_list))
 
     #  2 - work nodes
-    print cypher
+    print (cypher)
 
     # 3 - performance -> work relationships
     if len(performances) > 0:
-        print "\n// performances of"
-        print performances
+        print ("\n// performances of")
+        print (performances)
 
     # 4 - composer -> work relationships
     if len(composers) > 0:
-        print "\n// composers"
-        print composers
+        print ("\n// composers")
+        print (composers)
 
 
 def dumpclean(obj):
     if type(obj) == dict:
         for k, v in obj.items():
             if hasattr(v, '__iter__'):
-                print k
+                print (k)
                 dumpclean(v)
             else:
-                print '%s : %s' % (k, v)
+                print ('%s : %s' % (k, v))
     elif type(obj) == list:
         for v in obj:
             if hasattr(v, '__iter__'):
                 dumpclean(v)
             else:
-                print v
+                print (v)
     else:
-        print obj
+        print (obj)
 
 
 def artist_participation(mb, perf):
     retval = ""
     if len(mb["roles"]) > 0:
         retval += "MERGE (" + mb["artist"] + ")-[:PARTICIPATED_IN { roles: [" + \
-                  ', '.join("'" + i.encode('utf-8').strip() + "'" for i in mb["roles"]) + "]"
+                  ', '.join("'" + i.strip() + "'" for i in mb["roles"]) + "]"
         if len(mb["instruments"]) > 0:
-            retval += ", instruments: [" + ', '.join("'" + i.encode('utf-8').strip() +
+            retval += ", instruments: [" + ', '.join("'" + i.strip() +
                                                      "'" for i in mb["instruments"]) + "]"
         retval += " }]->(" + perf + ")\n"
     return retval

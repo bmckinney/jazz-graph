@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "jazz-graph"
+version = "0.1.0"
+description = "jazz discography represented as a labeled property graph"
+authors = ["bmckinney <mckinney.sw@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = []
+
+[tool.poetry.dependencies]
+python = "^3.10"
+musicbrainzngs = "^0.7.1"
+geopy = "^2.3.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,3 +1,4 @@
+// bravo-brubeck
 // releases
 
 MERGE (release_861d399d8c3f:Release{ uuid: '0212b65c-497a-4490-991b-861d399d8c3f' })
@@ -57,7 +58,7 @@ SET person_4b7c80fe34de.imdb = 'http://www.imdb.com/name/nm0221474/'
 SET person_4b7c80fe34de.wikipedia = 'https://en.wikipedia.org/wiki/Paul_Desmond'
 SET person_4b7c80fe34de.discogs = 'https://www.discogs.com/artist/170329'
 SET person_4b7c80fe34de.wikidata = 'https://www.wikidata.org/wiki/Q332471'
-SET person_4b7c80fe34de.databases = ['http://rateyourmusic.com/artist/paul_desmond']
+// SET person_4b7c80fe34de.databases = ["http://rateyourmusic.com/artist/paul_desmond"]
 SET person_4b7c80fe34de.musicbrainz = 'https://musicbrainz.org/artist/d5bf3447-c526-4f7c-9931-4b7c80fe34de'
 SET person_4b7c80fe34de.source = 'musicbrainz.org'
 SET person_4b7c80fe34de.timestamp = timestamp()
@@ -73,10 +74,10 @@ SET person_3f66d505061b.imdb = 'http://www.imdb.com/name/nm0115399/'
 SET person_3f66d505061b.wikipedia = 'https://en.wikipedia.org/wiki/Dave_Brubeck'
 SET person_3f66d505061b.discogs = 'https://www.discogs.com/artist/37737'
 SET person_3f66d505061b.wikidata = 'https://www.wikidata.org/wiki/Q108597'
-SET person_3f66d505061b.discographies = ['http://www.jazzdisco.org/dave-brubeck/catalog/']
-SET person_3f66d505061b.databases = ['http://rateyourmusic.com/artist/dave_brubeck', 'http://www.45cat.com/artist/dave-brubeck']
+// SET person_3f66d505061b.discographies = ["http://www.jazzdisco.org/dave-brubeck/catalog/"]
+// SET person_3f66d505061b.databases = ["http://rateyourmusic.com/artist/dave_brubeck", "http://www.45cat.com/artist/dave-brubeck"]
 SET person_3f66d505061b.musicbrainz = 'https://musicbrainz.org/artist/de0222a6-e1c4-403d-8b01-3f66d505061b'
-SET person_3f66d505061b.isni_list = ['http://isni.org/isni/000000011021617X']
+// SET person_3f66d505061b.isni_list = ["http://isni.org/isni/000000011021617X"]
 SET person_3f66d505061b.source = 'musicbrainz.org'
 SET person_3f66d505061b.timestamp = timestamp()
 
@@ -109,7 +110,7 @@ SET person_c0cb5805f1e7.imdb = 'http://www.imdb.com/name/nm1437162/'
 SET person_c0cb5805f1e7.wikipedia = 'https://en.wikipedia.org/wiki/Dave_Brubeck#Dave_Brubeck_Quartet'
 SET person_c0cb5805f1e7.discogs = 'https://www.discogs.com/artist/251689'
 SET person_c0cb5805f1e7.wikidata = 'https://www.wikidata.org/wiki/Q264163'
-SET person_c0cb5805f1e7.databases = ['http://www.45cat.com/artist/the-dave-brubeck-quartet']
+// SET person_c0cb5805f1e7.databases = ["http://www.45cat.com/artist/the-dave-brubeck-quartet"]
 SET person_c0cb5805f1e7.musicbrainz = 'https://musicbrainz.org/artist/7bf711e9-4e69-4e08-b6e8-c0cb5805f1e7'
 SET person_c0cb5805f1e7.source = 'musicbrainz.org'
 SET person_c0cb5805f1e7.timestamp = timestamp()
@@ -209,7 +210,7 @@ SET person_1da0a2985cb1.wikipedia = 'https://en.wikipedia.org/wiki/Consuelo_Vel%
 SET person_1da0a2985cb1.discogs = 'https://www.discogs.com/artist/556380'
 SET person_1da0a2985cb1.wikidata = 'https://www.wikidata.org/wiki/Q232750'
 SET person_1da0a2985cb1.musicbrainz = 'https://musicbrainz.org/artist/a2c4674d-35eb-4e86-9100-1da0a2985cb1'
-SET person_1da0a2985cb1.isni_list = ['http://isni.org/isni/0000000081163469']
+// SET person_1da0a2985cb1.isni_list = ["http://isni.org/isni/0000000081163469"]
 SET person_1da0a2985cb1.source = 'musicbrainz.org'
 SET person_1da0a2985cb1.timestamp = timestamp()
 
@@ -222,9 +223,9 @@ SET person_40ed0736e815.imdb = 'http://www.imdb.com/name/nm0741097/'
 SET person_40ed0736e815.wikipedia = 'https://en.wikipedia.org/wiki/Juventino_Rosas'
 SET person_40ed0736e815.discogs = 'https://www.discogs.com/artist/800999'
 SET person_40ed0736e815.wikidata = 'https://www.wikidata.org/wiki/Q461403'
-SET person_40ed0736e815.databases = ['http://catalogue.bnf.fr/ark:/12148/cb138991635', 'http://d-nb.info/gnd/123093848']
+// SET person_40ed0736e815.databases = ["http://catalogue.bnf.fr/ark:/12148/cb138991635", "http://d-nb.info/gnd/123093848"]
 SET person_40ed0736e815.musicbrainz = 'https://musicbrainz.org/artist/b2e7da33-0bab-4249-b302-40ed0736e815'
-SET person_40ed0736e815.isni_list = ['http://isni.org/isni/0000000081255785']
+// SET person_40ed0736e815.isni_list = ["http://isni.org/isni/0000000081255785"]
 SET person_40ed0736e815.source = 'musicbrainz.org'
 SET person_40ed0736e815.timestamp = timestamp()
 
@@ -237,9 +238,9 @@ SET person_8cd4f6f94a5c.allmusic = 'http://www.allmusic.com/artist/mn0000590334'
 SET person_8cd4f6f94a5c.wikipedia = 'https://en.wikipedia.org/wiki/Manuel_Ponce'
 SET person_8cd4f6f94a5c.discogs = 'https://www.discogs.com/artist/843631'
 SET person_8cd4f6f94a5c.wikidata = 'https://www.wikidata.org/wiki/Q360206'
-SET person_8cd4f6f94a5c.databases = ['http://catalogue.bnf.fr/ark:/12148/cb13898593z', 'https://d-nb.info/gnd/119466953', 'https://openlibrary.org/works/OL2250189A']
+// SET person_8cd4f6f94a5c.databases = ["http://catalogue.bnf.fr/ark:/12148/cb13898593z", "https://d-nb.info/gnd/119466953", "https://openlibrary.org/works/OL2250189A"]
 SET person_8cd4f6f94a5c.musicbrainz = 'https://musicbrainz.org/artist/22ee6983-fab6-4ac1-872c-8cd4f6f94a5c'
-SET person_8cd4f6f94a5c.isni_list = ['http://isni.org/isni/0000000116093617']
+// SET person_8cd4f6f94a5c.isni_list = ["http://isni.org/isni/0000000116093617"]
 SET person_8cd4f6f94a5c.source = 'musicbrainz.org'
 SET person_8cd4f6f94a5c.timestamp = timestamp()
 
@@ -264,7 +265,7 @@ SET person_8d40b5dcbc41.name = '[traditional]'
 SET person_8d40b5dcbc41.disambiguation = 'Special Purpose Artist'
 SET person_8d40b5dcbc41.allmusic = 'http://www.allmusic.com/artist/mn0000022266'
 SET person_8d40b5dcbc41.discogs = 'https://www.discogs.com/artist/151641'
-SET person_8d40b5dcbc41.databases = ['http://www.whosampled.com/Traditional-Folk/', 'https://rateyourmusic.com/artist/traditional']
+// SET person_8d40b5dcbc41.databases = ["http://www.whosampled.com/Traditional-Folk/", "https://rateyourmusic.com/artist/traditional"]
 SET person_8d40b5dcbc41.musicbrainz = 'https://musicbrainz.org/artist/9be7f096-97ec-4615-8957-8d40b5dcbc41'
 SET person_8d40b5dcbc41.source = 'musicbrainz.org'
 SET person_8d40b5dcbc41.timestamp = timestamp()
@@ -288,7 +289,7 @@ SET person_3f9a959bc006.viaf = 'http://viaf.org/viaf/16573497'
 SET person_3f9a959bc006.imdb = 'http://www.imdb.com/name/nm0800317/'
 SET person_3f9a959bc006.discogs = 'https://www.discogs.com/artist/556391'
 SET person_3f9a959bc006.wikidata = 'https://www.wikidata.org/wiki/Q6967884'
-SET person_3f9a959bc006.databases = ['http://catalogue.bnf.fr/ark:/12148/cb14776782x']
+// SET person_3f9a959bc006.databases = ["http://catalogue.bnf.fr/ark:/12148/cb14776782x"]
 SET person_3f9a959bc006.musicbrainz = 'https://musicbrainz.org/artist/513aef7f-970a-4b01-9ffb-3f9a959bc006'
 SET person_3f9a959bc006.source = 'musicbrainz.org'
 SET person_3f9a959bc006.timestamp = timestamp()
@@ -383,66 +384,66 @@ MERGE (person_8d40b5dcbc41)-[:COMPOSED]->(work_124ccd06cbdb)
 MERGE (person_8cd4f6f94a5c)-[:COMPOSED]->(work_c498cb7a38c7)
 MERGE (person_3f66d505061b)-[:COMPOSED]->(work_6416c3ff1396)
 
-MERGE (person_782ab218f45a)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['bongos', 'congas', 'guest'] }]->(perf_b79c43821682)
-MERGE (person_d5fead5a7988)-[:PARTICIPATED_IN { roles: ['producer'] }]->(perf_b79c43821682)
-MERGE (person_1749199a4da5)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['double bass'] }]->(perf_b79c43821682)
-MERGE (person_1fc0ebf8637e)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['guest', 'guitar'] }]->(perf_b79c43821682)
-MERGE (person_22a3e53a555c)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['drums'] }]->(perf_b79c43821682)
-MERGE (person_4b7c80fe34de)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['alto saxophone'] }]->(perf_b79c43821682)
-MERGE (person_3f66d505061b)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['piano'] }]->(perf_b79c43821682)
-MERGE (person_782ab218f45a)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['bongos', 'congas', 'guest'] }]->(perf_83aaac3fa8df)
-MERGE (person_d5fead5a7988)-[:PARTICIPATED_IN { roles: ['producer'] }]->(perf_83aaac3fa8df)
-MERGE (person_1749199a4da5)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['double bass'] }]->(perf_83aaac3fa8df)
-MERGE (person_1fc0ebf8637e)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['guest', 'guitar'] }]->(perf_83aaac3fa8df)
-MERGE (person_22a3e53a555c)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['drums'] }]->(perf_83aaac3fa8df)
-MERGE (person_4b7c80fe34de)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['alto saxophone'] }]->(perf_83aaac3fa8df)
-MERGE (person_3f66d505061b)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['piano'] }]->(perf_83aaac3fa8df)
-MERGE (person_782ab218f45a)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['bongos', 'congas', 'guest'] }]->(perf_472a25eeb5d4)
-MERGE (person_d5fead5a7988)-[:PARTICIPATED_IN { roles: ['producer'] }]->(perf_472a25eeb5d4)
-MERGE (person_1749199a4da5)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['double bass'] }]->(perf_472a25eeb5d4)
-MERGE (person_1fc0ebf8637e)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['guest', 'guitar'] }]->(perf_472a25eeb5d4)
-MERGE (person_22a3e53a555c)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['drums'] }]->(perf_472a25eeb5d4)
-MERGE (person_4b7c80fe34de)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['alto saxophone'] }]->(perf_472a25eeb5d4)
-MERGE (person_3f66d505061b)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['piano'] }]->(perf_472a25eeb5d4)
-MERGE (person_782ab218f45a)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['bongos', 'congas', 'guest'] }]->(perf_33d6eb8cf5c4)
-MERGE (person_d5fead5a7988)-[:PARTICIPATED_IN { roles: ['producer'] }]->(perf_33d6eb8cf5c4)
-MERGE (person_1749199a4da5)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['double bass'] }]->(perf_33d6eb8cf5c4)
-MERGE (person_1fc0ebf8637e)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['guest', 'guitar'] }]->(perf_33d6eb8cf5c4)
-MERGE (person_22a3e53a555c)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['drums'] }]->(perf_33d6eb8cf5c4)
-MERGE (person_4b7c80fe34de)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['alto saxophone'] }]->(perf_33d6eb8cf5c4)
-MERGE (person_3f66d505061b)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['piano'] }]->(perf_33d6eb8cf5c4)
-MERGE (person_782ab218f45a)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['bongos', 'congas', 'guest'] }]->(perf_d4da0f7cbc73)
-MERGE (person_d5fead5a7988)-[:PARTICIPATED_IN { roles: ['producer'] }]->(perf_d4da0f7cbc73)
-MERGE (person_1749199a4da5)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['double bass'] }]->(perf_d4da0f7cbc73)
-MERGE (person_1fc0ebf8637e)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['guest', 'guitar'] }]->(perf_d4da0f7cbc73)
-MERGE (person_22a3e53a555c)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['drums'] }]->(perf_d4da0f7cbc73)
-MERGE (person_4b7c80fe34de)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['alto saxophone'] }]->(perf_d4da0f7cbc73)
-MERGE (person_3f66d505061b)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['piano'] }]->(perf_d4da0f7cbc73)
-MERGE (person_782ab218f45a)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['bongos', 'congas', 'guest'] }]->(perf_25c2538edb5f)
-MERGE (person_d5fead5a7988)-[:PARTICIPATED_IN { roles: ['producer'] }]->(perf_25c2538edb5f)
-MERGE (person_1749199a4da5)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['double bass'] }]->(perf_25c2538edb5f)
-MERGE (person_1fc0ebf8637e)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['guest', 'guitar'] }]->(perf_25c2538edb5f)
-MERGE (person_22a3e53a555c)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['drums'] }]->(perf_25c2538edb5f)
-MERGE (person_4b7c80fe34de)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['alto saxophone'] }]->(perf_25c2538edb5f)
-MERGE (person_3f66d505061b)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['piano'] }]->(perf_25c2538edb5f)
-MERGE (person_782ab218f45a)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['bongos', 'congas', 'guest'] }]->(perf_e03467c61af0)
-MERGE (person_d5fead5a7988)-[:PARTICIPATED_IN { roles: ['producer'] }]->(perf_e03467c61af0)
-MERGE (person_1749199a4da5)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['double bass'] }]->(perf_e03467c61af0)
-MERGE (person_1fc0ebf8637e)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['guest', 'guitar'] }]->(perf_e03467c61af0)
-MERGE (person_22a3e53a555c)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['drums'] }]->(perf_e03467c61af0)
-MERGE (person_4b7c80fe34de)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['alto saxophone'] }]->(perf_e03467c61af0)
-MERGE (person_3f66d505061b)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['piano'] }]->(perf_e03467c61af0)
-MERGE (person_782ab218f45a)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['bongos', 'congas', 'guest'] }]->(perf_c4e540492e06)
-MERGE (person_d5fead5a7988)-[:PARTICIPATED_IN { roles: ['producer'] }]->(perf_c4e540492e06)
-MERGE (person_1749199a4da5)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['double bass'] }]->(perf_c4e540492e06)
-MERGE (person_1fc0ebf8637e)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['guest', 'guitar'] }]->(perf_c4e540492e06)
-MERGE (person_22a3e53a555c)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['drums'] }]->(perf_c4e540492e06)
-MERGE (person_4b7c80fe34de)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['alto saxophone'] }]->(perf_c4e540492e06)
-MERGE (person_3f66d505061b)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['piano'] }]->(perf_c4e540492e06)
-MERGE (person_782ab218f45a)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['bongos', 'congas', 'guest'] }]->(perf_f13ede446027)
-MERGE (person_d5fead5a7988)-[:PARTICIPATED_IN { roles: ['producer'] }]->(perf_f13ede446027)
-MERGE (person_1749199a4da5)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['double bass'] }]->(perf_f13ede446027)
-MERGE (person_1fc0ebf8637e)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['guest', 'guitar'] }]->(perf_f13ede446027)
-MERGE (person_22a3e53a555c)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['drums'] }]->(perf_f13ede446027)
-MERGE (person_4b7c80fe34de)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['alto saxophone'] }]->(perf_f13ede446027)
-MERGE (person_3f66d505061b)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['piano'] }]->(perf_f13ede446027)
+MERGE (person_782ab218f45a)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["bongos", "congas", "guest"] }]->(perf_b79c43821682)
+MERGE (person_d5fead5a7988)-[:PARTICIPATED_IN { roles: ["producer"] }]->(perf_b79c43821682)
+MERGE (person_1749199a4da5)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["double bass"] }]->(perf_b79c43821682)
+MERGE (person_1fc0ebf8637e)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["guest", "guitar"] }]->(perf_b79c43821682)
+MERGE (person_22a3e53a555c)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["drums"] }]->(perf_b79c43821682)
+MERGE (person_4b7c80fe34de)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["alto saxophone"] }]->(perf_b79c43821682)
+MERGE (person_3f66d505061b)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["piano"] }]->(perf_b79c43821682)
+MERGE (person_782ab218f45a)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["bongos", "congas", "guest"] }]->(perf_83aaac3fa8df)
+MERGE (person_d5fead5a7988)-[:PARTICIPATED_IN { roles: ["producer"] }]->(perf_83aaac3fa8df)
+MERGE (person_1749199a4da5)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["double bass"] }]->(perf_83aaac3fa8df)
+MERGE (person_1fc0ebf8637e)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["guest", "guitar"] }]->(perf_83aaac3fa8df)
+MERGE (person_22a3e53a555c)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["drums"] }]->(perf_83aaac3fa8df)
+MERGE (person_4b7c80fe34de)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["alto saxophone"] }]->(perf_83aaac3fa8df)
+MERGE (person_3f66d505061b)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["piano"] }]->(perf_83aaac3fa8df)
+MERGE (person_782ab218f45a)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["bongos", "congas", "guest"] }]->(perf_472a25eeb5d4)
+MERGE (person_d5fead5a7988)-[:PARTICIPATED_IN { roles: ["producer"] }]->(perf_472a25eeb5d4)
+MERGE (person_1749199a4da5)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["double bass"] }]->(perf_472a25eeb5d4)
+MERGE (person_1fc0ebf8637e)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["guest", "guitar"] }]->(perf_472a25eeb5d4)
+MERGE (person_22a3e53a555c)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["drums"] }]->(perf_472a25eeb5d4)
+MERGE (person_4b7c80fe34de)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["alto saxophone"] }]->(perf_472a25eeb5d4)
+MERGE (person_3f66d505061b)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["piano"] }]->(perf_472a25eeb5d4)
+MERGE (person_782ab218f45a)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["bongos", "congas", "guest"] }]->(perf_33d6eb8cf5c4)
+MERGE (person_d5fead5a7988)-[:PARTICIPATED_IN { roles: ["producer"] }]->(perf_33d6eb8cf5c4)
+MERGE (person_1749199a4da5)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["double bass"] }]->(perf_33d6eb8cf5c4)
+MERGE (person_1fc0ebf8637e)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["guest", "guitar"] }]->(perf_33d6eb8cf5c4)
+MERGE (person_22a3e53a555c)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["drums"] }]->(perf_33d6eb8cf5c4)
+MERGE (person_4b7c80fe34de)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["alto saxophone"] }]->(perf_33d6eb8cf5c4)
+MERGE (person_3f66d505061b)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["piano"] }]->(perf_33d6eb8cf5c4)
+MERGE (person_782ab218f45a)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["bongos", "congas", "guest"] }]->(perf_d4da0f7cbc73)
+MERGE (person_d5fead5a7988)-[:PARTICIPATED_IN { roles: ["producer"] }]->(perf_d4da0f7cbc73)
+MERGE (person_1749199a4da5)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["double bass"] }]->(perf_d4da0f7cbc73)
+MERGE (person_1fc0ebf8637e)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["guest", "guitar"] }]->(perf_d4da0f7cbc73)
+MERGE (person_22a3e53a555c)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["drums"] }]->(perf_d4da0f7cbc73)
+MERGE (person_4b7c80fe34de)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["alto saxophone"] }]->(perf_d4da0f7cbc73)
+MERGE (person_3f66d505061b)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["piano"] }]->(perf_d4da0f7cbc73)
+MERGE (person_782ab218f45a)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["bongos", "congas", "guest"] }]->(perf_25c2538edb5f)
+MERGE (person_d5fead5a7988)-[:PARTICIPATED_IN { roles: ["producer"] }]->(perf_25c2538edb5f)
+MERGE (person_1749199a4da5)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["double bass"] }]->(perf_25c2538edb5f)
+MERGE (person_1fc0ebf8637e)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["guest", "guitar"] }]->(perf_25c2538edb5f)
+MERGE (person_22a3e53a555c)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["drums"] }]->(perf_25c2538edb5f)
+MERGE (person_4b7c80fe34de)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["alto saxophone"] }]->(perf_25c2538edb5f)
+MERGE (person_3f66d505061b)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["piano"] }]->(perf_25c2538edb5f)
+MERGE (person_782ab218f45a)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["bongos", "congas", "guest"] }]->(perf_e03467c61af0)
+MERGE (person_d5fead5a7988)-[:PARTICIPATED_IN { roles: ["producer"] }]->(perf_e03467c61af0)
+MERGE (person_1749199a4da5)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["double bass"] }]->(perf_e03467c61af0)
+MERGE (person_1fc0ebf8637e)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["guest", "guitar"] }]->(perf_e03467c61af0)
+MERGE (person_22a3e53a555c)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["drums"] }]->(perf_e03467c61af0)
+MERGE (person_4b7c80fe34de)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["alto saxophone"] }]->(perf_e03467c61af0)
+MERGE (person_3f66d505061b)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["piano"] }]->(perf_e03467c61af0)
+MERGE (person_782ab218f45a)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["bongos", "congas", "guest"] }]->(perf_c4e540492e06)
+MERGE (person_d5fead5a7988)-[:PARTICIPATED_IN { roles: ["producer"] }]->(perf_c4e540492e06)
+MERGE (person_1749199a4da5)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["double bass"] }]->(perf_c4e540492e06)
+MERGE (person_1fc0ebf8637e)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["guest", "guitar"] }]->(perf_c4e540492e06)
+MERGE (person_22a3e53a555c)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["drums"] }]->(perf_c4e540492e06)
+MERGE (person_4b7c80fe34de)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["alto saxophone"] }]->(perf_c4e540492e06)
+MERGE (person_3f66d505061b)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["piano"] }]->(perf_c4e540492e06)
+MERGE (person_782ab218f45a)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["bongos", "congas", "guest"] }]->(perf_f13ede446027)
+MERGE (person_d5fead5a7988)-[:PARTICIPATED_IN { roles: ["producer"] }]->(perf_f13ede446027)
+MERGE (person_1749199a4da5)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["double bass"] }]->(perf_f13ede446027)
+MERGE (person_1fc0ebf8637e)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["guest", "guitar"] }]->(perf_f13ede446027)
+MERGE (person_22a3e53a555c)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["drums"] }]->(perf_f13ede446027)
+MERGE (person_4b7c80fe34de)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["alto saxophone"] }]->(perf_f13ede446027)
+MERGE (person_3f66d505061b)-[:PARTICIPATED_IN { roles: ["musician"], instruments: ["piano"] }]->(perf_f13ede446027)

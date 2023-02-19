@@ -36,29 +36,18 @@ cypher_batch4=(
  we-three-data
  the-blues-and-the-abstract-truth
 )
+cypher_batch5=(
+ whereas
+ roy-alty
+ cymbalism
+ fountain-of-youth
+ praise
+)
 
 echo starting imports
 
-# batch1
-for cypher in "${cypher_batch1[@]}"; do
-echo importing cql/$cypher.cql...
-cat cql/$cypher.cql | cypher-shell -a $NEO4J_SERVER -u $NEO4J_USER -p $NEO4J_PASSWORD --format plain
-done
-
-# batch2
-for cypher in "${cypher_batch2[@]}"; do
-echo importing cql/$cypher.cql...
-cat cql/$cypher.cql | cypher-shell -a $NEO4J_SERVER -u $NEO4J_USER -p $NEO4J_PASSWORD --format plain
-done
-
-# batch3
-for cypher in "${cypher_batch3[@]}"; do
-echo importing cql/$cypher.cql...
-cat cql/$cypher.cql | cypher-shell -a $NEO4J_SERVER -u $NEO4J_USER -p $NEO4J_PASSWORD --format plain
-done
-
-# batch4
-for cypher in "${cypher_batch4[@]}"; do
+# batch
+for cypher in "${cypher_batch5[@]}"; do
 echo importing cql/$cypher.cql...
 cat cql/$cypher.cql | cypher-shell -a $NEO4J_SERVER -u $NEO4J_USER -p $NEO4J_PASSWORD --format plain
 done

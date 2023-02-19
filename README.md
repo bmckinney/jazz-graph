@@ -71,3 +71,14 @@ with count(perf) as performances, person_coll as trio
 order by performances desc
 return distinct trio, performances
 ```
+
+#### Shortest path queries
+
+```
+MATCH
+(RH:Person {name: 'Roy Haynes'}),
+(CC:Person {name: 'Chick Corea'}),
+p = shortestPath((RH)-[:PARTICIPATED_IN*]-(CC))
+WHERE length(p) > 1
+RETURN p
+```

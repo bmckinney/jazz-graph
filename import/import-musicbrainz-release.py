@@ -1,9 +1,11 @@
 #!/usr/bin/python
 
 import sys
+import logging
 import musicbrainzngs as m
 from geopy.geocoders import Nominatim
 
+logging.basicConfig(filename='import-musicbrainz-release.log', encoding='utf-8', level=logging.DEBUG)
 
 def main(args):
 
@@ -34,6 +36,9 @@ def main(args):
         # debug
         # for key, value in rel.iteritems():
         #     print key, value
+
+        # logging.debug("RELEASE")
+        # logging.debug(rel)
 
         rid = "release_" + uuid.rsplit('-', 1)[1]
 
@@ -86,6 +91,9 @@ def main(args):
                             # debug
                             # for key, value in rec.iteritems():
                             #     print key, value
+
+                            logging.debug("RECORDING")
+                            logging.debug(rec)
 
                             # add to list of performance uuids
                             performance_list.append(track['recording']['id'])
@@ -154,6 +162,10 @@ def main(args):
                             place_begin_date = ''
                             place_end_date = ''
                             if "place-relation-list" in rec:
+
+                                logging.debug("PLACE:")
+                                logging.debug(rec['place-relation-list'])
+
                                 for place in rec['place-relation-list']:
                                     if 'begin' in place:
                                         place_begin_date = place['begin']
@@ -172,14 +184,19 @@ def main(args):
                                                 address = place['place']['address']
 
                                                 # try to expand the address with geopy
-                                                geolocator = Nominatim(user_agent="mckinney.sw@gmail.com")
-                                                location = geolocator.geocode(address)
-                                                if location is not None:
-                                                    place_nodes += "SET " + plc + ".address = '" + location.address + "'\n"
-                                                    place_nodes += "SET " + plc + ".lat = '" + repr(location.latitude) + "'\n"
-                                                    place_nodes += "SET " + plc + ".lng = '" + repr(location.longitude) + "'\n"
-                                                else:
-                                                    place_nodes += "SET " + plc + ".address = '" + address + "'\n"
+                                                # geolocator = Nominatim(user_agent="mckinney.sw@gmail.com")
+                                                # location = geolocator.geocode(address)
+                                                # if location is not None:
+                                                #     place_nodes += "SET " + plc + ".address = '" + location.address + "'\n"
+                                                #     place_nodes += "SET " + plc + ".lat = '" + repr(location.latitude) + "'\n"
+                                                #     place_nodes += "SET " + plc + ".lng = '" + repr(location.longitude) + "'\n"
+                                                # else:
+                                                #     place_nodes += "SET " + plc + ".address = '" + address + "'\n"
+
+                                            # place -> area
+                                            if 'area' in place['place']:
+                                                area = place['place']['area']
+                                                place_nodes += "SET " + plc + ".area = '" + area + "'\n"
 
                                             place_nodes += "SET " + plc + ".source = 'musicbrainz.org'\n"
 
@@ -453,6 +470,16 @@ def print_work_cypher(uuid_list, perf_list, artist_list):
                     # don't duplicate artists where they are also performers on the release
                     if rel['target'] not in artist_list:
                         composer_list.append(rel['target'])
+                if rel['type'] == "lyricist":
+
+                    aid = "person_" + rel['target'].rsplit('-', 1)[1]
+                    wid = "work_" + uuid.rsplit('-', 1)[1]
+                    composers += "MERGE (" + aid + ")-[:WROTE_LYRICS]->(" + wid + ")\n"
+
+                    # don't duplicate artists where they are also performers on the release
+                    if rel['target'] not in artist_list:
+                        composer_list.append(rel['target'])
+
 
         cypher += "\nMERGE (" + wid + ":Work{ uuid: '" + work['id'] + "' })\n"
 
@@ -471,7 +498,7 @@ def print_work_cypher(uuid_list, perf_list, artist_list):
                 if int(tag['count']) > 0:
                     tlist.append(tag['name'])
             if len(tlist) > 0:
-                cypher += "SET " + wid + ".tags = [" + ', '.join("'" + p.encode('utf-8').strip() +
+                cypher += "SET " + wid + ".tags = [" + ', '.join("'" + p.strip() +
                                                                  "'" for p in tlist) + "]\n"
 
         if 'url-relation-list' in work:
@@ -495,7 +522,7 @@ def print_work_cypher(uuid_list, perf_list, artist_list):
                     odlist.append(url_target)
 
             if len(odlist) > 0:
-                cypher += "SET " + wid + ".databases = [" + ', '.join("'" + p.encode('utf-8').strip() +
+                cypher += "SET " + wid + ".databases = [" + ', '.join("'" + p.strip() +
                                                                       "'" for p in odlist) + "]\n"
 
             cypher += "SET " + wid + ".musicbrainz = 'https://musicbrainz.org/work/" + work['id'] + "'\n"

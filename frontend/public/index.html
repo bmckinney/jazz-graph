@@ -15,8 +15,9 @@
     const API_URL = 'https://jazz-bmckinney.vercel.app/api/jazz'
     // CYPHER QUERIES
     const cypher_most_bassists = 'MATCH (person:Person)-[part:PARTICIPATED_IN]->(performance:Performance)<-[:PARTICIPATED_IN]-(roy:Person {name: \'Roy Haynes\'}) ' +
-        'WHERE (part.instruments) AND \'bass\' in part.instruments RETURN person.name as name, count(*) AS performances ORDER BY performances DESC'
-
+        'WHERE (part.instruments) AND (\'bass\' in part.instruments) OR (\'double bass\' in part.instruments) RETURN person.name as name, count(*) AS performances ORDER BY performances DESC'
+    const cypher_most_pianists = 'MATCH (person:Person)-[part:PARTICIPATED_IN]->(performance:Performance)<-[:PARTICIPATED_IN]-(roy:Person {name: \'Roy Haynes\'}) ' +
+        'WHERE (part.instruments) AND \'piano\' in part.instruments RETURN person.name as name, count(*) AS performances ORDER BY performances DESC'
     const cypher_van_gelder = 'MATCH (person:Person {name: \'Roy Haynes\'})-[part:PARTICIPATED_IN]->(perf:Performance)<-[:HAS_TRACK]-(r:Release), (perf)-[hp:HAS_PLACE]-(place:Place {name: \'Van Gelder Studio\'}) RETURN hp.begin as date, perf.name as performance, r.name as release, place.name as place ORDER BY hp.begin ASC'
 
     document.addEventListener('alpine:init', () => {
@@ -44,24 +45,75 @@
                 this.results = await cypher_json.results
             },
         }))
+        // PIANISTS
+        Alpine.data('data3', () => ({
+            results: [],
+            async init() {
+                const cypher_response = await fetch(API_URL, {
+                    method: 'POST', headers: {'Content-Type': 'text/plain'},
+                    body: cypher_most_pianists
+                })
+                let cypher_json = await cypher_response.json()
+                this.results = await cypher_json.results
+            },
+        }))
     });
 </script>
 
 <h3 class="m-8">
     <span class="text-xl text-sky-400 font-bold">What bassists did Roy Haynes perform with the most?</span>
 </h3>
-
 <details class="m-8">
     <summary class="flex items-center font-bold">Cypher</summary>
     <pre>
         MATCH (person:Person)-[part:PARTICIPATED_IN]->(performance:Performance)<-[:PARTICIPATED_IN]-(roy:Person {name: 'Roy Haynes'})
-        WHERE (part.instruments) AND 'bass' in part.instruments
+        WHERE (part.instruments) AND ('bass' in part.instruments) OR ('double bass' in part.instruments)
         RETURN person.name as name, count(*) AS performances
         ORDER BY performances DESC
     </pre>
 </details>
-
 <table id="bassistsTable" x-data="data1"
+       class="m-8 border-separate border-spacing-2 w-4/5 border border-slate-400 dark:border-slate-500 bg-white dark:bg-slate-800 text-sm shadow-sm">
+    <thead class="bg-slate-50 dark:bg-slate-700">
+    <tr>
+        <th class="w-1/2 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">
+            Name
+        </th>
+        <th class="w-1/2 border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left">
+            Performances
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <template x-if="!results">
+        <tr>
+            <td colspan="4"><i>Loading...</i></td>
+        </tr>
+    </template>
+    <template x-for="result in results">
+        <tr>
+            <td x-text="result.name"
+                class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400"></td>
+            <td x-text="result.performances"
+                class="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400"></td>
+        </tr>
+    </template>
+    </tbody>
+</table>
+
+<h3 class="m-8">
+    <span class="text-xl text-sky-400 font-bold">What pianists did Roy Haynes perform with the most?</span>
+</h3>
+<details class="m-8">
+    <summary class="flex items-center font-bold">Cypher</summary>
+    <pre>
+        MATCH (person:Person)-[part:PARTICIPATED_IN]->(performance:Performance)<-[:PARTICIPATED_IN]-(roy:Person {name: 'Roy Haynes'})
+        WHERE (part.instruments) AND 'piano' in part.instruments
+        RETURN person.name as name, count(*) AS performances
+        ORDER BY performances DESC
+    </pre>
+</details>
+<table id="pianistsTable" x-data="data3"
        class="m-8 border-separate border-spacing-2 w-4/5 border border-slate-400 dark:border-slate-500 bg-white dark:bg-slate-800 text-sm shadow-sm">
     <thead class="bg-slate-50 dark:bg-slate-700">
     <tr>

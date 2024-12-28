@@ -1,3 +1,12 @@
+
+import kuzu
+
+db = kuzu.Database("./haynes_db")
+conn = kuzu.Connection(db)
+
+conn.execute(
+"""
+
 // releases
 
 MERGE (release_966fc4f493a8:Release{ uuid: 'f3ccbf09-08b6-465f-833c-966fc4f493a8' })
@@ -9,7 +18,7 @@ SET release_966fc4f493a8.discode = 'GXY-5103'
 SET release_966fc4f493a8.discogs = 'https://www.discogs.com/release/1350637'
 SET release_966fc4f493a8.musicbrainz = 'http://musicbrainz.org/release/f3ccbf09-08b6-465f-833c-966fc4f493a8'
 SET release_966fc4f493a8.source = 'musicbrainz.org'
-SET release_966fc4f493a8.timestamp = timestamp()
+
 
 MERGE (person_e044666c4828:Person{ uuid: '57db3f59-9c58-4f68-a00e-e044666c4828' }) 
 SET person_e044666c4828.name = 'Ron Carter'
@@ -25,7 +34,7 @@ SET person_e044666c4828.databases = ['http://id.loc.gov/authorities/names/n81014
 SET person_e044666c4828.musicbrainz = 'https://musicbrainz.org/artist/57db3f59-9c58-4f68-a00e-e044666c4828'
 SET person_e044666c4828.isni_list = ['http://isni.org/isni/0000000114394862']
 SET person_e044666c4828.source = 'musicbrainz.org'
-SET person_e044666c4828.timestamp = timestamp()
+
 
 MERGE (person_6f0a331cc1ca:Person{ uuid: '2c090b57-5e9d-49c5-9b71-6f0a331cc1ca' }) 
 SET person_6f0a331cc1ca.name = 'Roy Haynes'
@@ -42,7 +51,7 @@ SET person_6f0a331cc1ca.databases = ['http://id.loc.gov/authorities/names/n81140
 SET person_6f0a331cc1ca.musicbrainz = 'https://musicbrainz.org/artist/2c090b57-5e9d-49c5-9b71-6f0a331cc1ca'
 SET person_6f0a331cc1ca.isni_list = ['http://isni.org/isni/0000000078266176']
 SET person_6f0a331cc1ca.source = 'musicbrainz.org'
-SET person_6f0a331cc1ca.timestamp = timestamp()
+
 
 MERGE (person_da3f335093a1:Person{ uuid: 'c492873b-5d95-4c93-b424-da3f335093a1' }) 
 SET person_da3f335093a1.name = 'Milcho Leviev'
@@ -58,7 +67,7 @@ SET person_da3f335093a1.databases = ['http://id.loc.gov/authorities/names/n82234
 SET person_da3f335093a1.musicbrainz = 'https://musicbrainz.org/artist/c492873b-5d95-4c93-b424-da3f335093a1'
 SET person_da3f335093a1.isni_list = ['http://isni.org/isni/0000000078396579']
 SET person_da3f335093a1.source = 'musicbrainz.org'
-SET person_da3f335093a1.timestamp = timestamp()
+
 
 MERGE (person_22a5fbaaf713:Person{ uuid: 'cf362673-150d-4a99-8e7b-22a5fbaaf713' }) 
 SET person_22a5fbaaf713.name = 'Cecil McBee'
@@ -72,7 +81,7 @@ SET person_22a5fbaaf713.databases = ['http://id.loc.gov/authorities/names/n78048
 SET person_22a5fbaaf713.musicbrainz = 'https://musicbrainz.org/artist/cf362673-150d-4a99-8e7b-22a5fbaaf713'
 SET person_22a5fbaaf713.isni_list = ['http://isni.org/isni/0000000079949972']
 SET person_22a5fbaaf713.source = 'musicbrainz.org'
-SET person_22a5fbaaf713.timestamp = timestamp()
+
 
 MERGE (person_15c58dce8f26:Person{ uuid: 'ba72fa6c-7fbc-42ca-b4a8-15c58dce8f26' }) 
 SET person_15c58dce8f26.name = 'Kenneth Nash'
@@ -80,7 +89,7 @@ SET person_15c58dce8f26.gender = 'Male'
 SET person_15c58dce8f26.discogs = 'https://www.discogs.com/artist/309767'
 SET person_15c58dce8f26.musicbrainz = 'https://musicbrainz.org/artist/ba72fa6c-7fbc-42ca-b4a8-15c58dce8f26'
 SET person_15c58dce8f26.source = 'musicbrainz.org'
-SET person_15c58dce8f26.timestamp = timestamp()
+
 
 MERGE (person_ac19da0b921c:Person{ uuid: 'e37848cb-455c-4963-bdff-ac19da0b921c' }) 
 SET person_ac19da0b921c.name = 'John Klemmer'
@@ -94,7 +103,7 @@ SET person_ac19da0b921c.databases = ['http://id.loc.gov/authorities/names/n91122
 SET person_ac19da0b921c.musicbrainz = 'https://musicbrainz.org/artist/e37848cb-455c-4963-bdff-ac19da0b921c'
 SET person_ac19da0b921c.isni_list = ['http://isni.org/isni/0000000063105900']
 SET person_ac19da0b921c.source = 'musicbrainz.org'
-SET person_ac19da0b921c.timestamp = timestamp()
+
 
 MERGE (person_176a3521680f:Person{ uuid: 'be718f29-078b-49e6-bcc4-176a3521680f' }) 
 SET person_176a3521680f.name = 'Phil Kaffel'
@@ -105,7 +114,7 @@ SET person_176a3521680f.discogs = 'https://www.discogs.com/artist/156347'
 SET person_176a3521680f.databases = ['https://rateyourmusic.com/artist/phil_kaffel']
 SET person_176a3521680f.musicbrainz = 'https://musicbrainz.org/artist/be718f29-078b-49e6-bcc4-176a3521680f'
 SET person_176a3521680f.source = 'musicbrainz.org'
-SET person_176a3521680f.timestamp = timestamp()
+
 
 MERGE (person_20039cafef7b:Person{ uuid: '56fbc674-7d57-4fc0-b36c-20039cafef7b' }) 
 SET person_20039cafef7b.name = 'Ed Michel'
@@ -114,7 +123,7 @@ SET person_20039cafef7b.imdb = 'https://www.imdb.com/name/nm2123705/'
 SET person_20039cafef7b.wikidata = 'https://www.wikidata.org/wiki/Q92309803'
 SET person_20039cafef7b.musicbrainz = 'https://musicbrainz.org/artist/56fbc674-7d57-4fc0-b36c-20039cafef7b'
 SET person_20039cafef7b.source = 'musicbrainz.org'
-SET person_20039cafef7b.timestamp = timestamp()
+
 
 MERGE (person_bb48278688a0:Person{ uuid: '6c9ca088-9da0-404f-ae61-bb48278688a0' }) 
 SET person_bb48278688a0.name = 'Peter Knapp'
@@ -123,7 +132,7 @@ SET person_bb48278688a0.disambiguation = 'bass'
 SET person_bb48278688a0.discogs = 'https://www.discogs.com/artist/947179'
 SET person_bb48278688a0.musicbrainz = 'https://musicbrainz.org/artist/6c9ca088-9da0-404f-ae61-bb48278688a0'
 SET person_bb48278688a0.source = 'musicbrainz.org'
-SET person_bb48278688a0.timestamp = timestamp()
+
 
 MERGE (person_41d78c725ce3:Person{ uuid: '7d3aa1dd-5e8b-47f3-a65b-41d78c725ce3' }) 
 SET person_41d78c725ce3.name = 'George Cables'
@@ -137,7 +146,7 @@ SET person_41d78c725ce3.databases = ['http://id.loc.gov/authorities/names/n80093
 SET person_41d78c725ce3.musicbrainz = 'https://musicbrainz.org/artist/7d3aa1dd-5e8b-47f3-a65b-41d78c725ce3'
 SET person_41d78c725ce3.isni_list = ['http://isni.org/isni/0000000115112388']
 SET person_41d78c725ce3.source = 'musicbrainz.org'
-SET person_41d78c725ce3.timestamp = timestamp()
+
 
 MERGE (person_ba539b0ef93c:Person{ uuid: '7cf86f47-fbb0-44a5-949e-ba539b0ef93c' }) 
 SET person_ba539b0ef93c.name = 'Baker Bigsby'
@@ -146,7 +155,7 @@ SET person_ba539b0ef93c.country = 'US'
 SET person_ba539b0ef93c.discogs = 'https://www.discogs.com/artist/363563'
 SET person_ba539b0ef93c.musicbrainz = 'https://musicbrainz.org/artist/7cf86f47-fbb0-44a5-949e-ba539b0ef93c'
 SET person_ba539b0ef93c.source = 'musicbrainz.org'
-SET person_ba539b0ef93c.timestamp = timestamp()
+
 
 MERGE (person_f180a2b2aaf0:Person{ uuid: 'a569ac3b-f21b-4773-84a6-f180a2b2aaf0' }) 
 SET person_f180a2b2aaf0.name = 'Stanley Cowell'
@@ -161,7 +170,7 @@ SET person_f180a2b2aaf0.databases = ['http://id.loc.gov/authorities/names/n81149
 SET person_f180a2b2aaf0.musicbrainz = 'https://musicbrainz.org/artist/a569ac3b-f21b-4773-84a6-f180a2b2aaf0'
 SET person_f180a2b2aaf0.isni_list = ['http://isni.org/isni/0000000081607496']
 SET person_f180a2b2aaf0.source = 'musicbrainz.org'
-SET person_f180a2b2aaf0.timestamp = timestamp()
+
 
 MERGE (person_8fe19080caaf:Person{ uuid: 'edbe5d7f-9511-4dfe-847a-8fe19080caaf' }) 
 SET person_8fe19080caaf.name = 'Bobby Hutcherson'
@@ -176,7 +185,7 @@ SET person_8fe19080caaf.databases = ['http://id.loc.gov/authorities/names/n81149
 SET person_8fe19080caaf.musicbrainz = 'https://musicbrainz.org/artist/edbe5d7f-9511-4dfe-847a-8fe19080caaf'
 SET person_8fe19080caaf.isni_list = ['http://isni.org/isni/0000000114505729']
 SET person_8fe19080caaf.source = 'musicbrainz.org'
-SET person_8fe19080caaf.timestamp = timestamp()
+
 
 MERGE (person_823edc2a7c02:Person{ uuid: '5ca31148-6257-44eb-bb0d-823edc2a7c02' }) 
 SET person_823edc2a7c02.name = 'Marcus Fiorillo'
@@ -185,14 +194,14 @@ SET person_823edc2a7c02.disambiguation = 'Jazz guitarist'
 SET person_823edc2a7c02.discogs = 'https://www.discogs.com/artist/1282894'
 SET person_823edc2a7c02.musicbrainz = 'https://musicbrainz.org/artist/5ca31148-6257-44eb-bb0d-823edc2a7c02'
 SET person_823edc2a7c02.source = 'musicbrainz.org'
-SET person_823edc2a7c02.timestamp = timestamp()
+
 
 MERGE (person_3b8d23ba518a:Person{ uuid: '9a6358be-4223-40f5-a8ee-3b8d23ba518a' }) 
 SET person_3b8d23ba518a.name = 'Baxter Fillmore'
 SET person_3b8d23ba518a.discogs = 'https://www.discogs.com/artist/1488637'
 SET person_3b8d23ba518a.musicbrainz = 'https://musicbrainz.org/artist/9a6358be-4223-40f5-a8ee-3b8d23ba518a'
 SET person_3b8d23ba518a.source = 'musicbrainz.org'
-SET person_3b8d23ba518a.timestamp = timestamp()
+
 // labels
 
 MERGE (label_b3591da0e289:Label{ uuid: '31d1382a-cc94-4829-9949-b3591da0e289' })
@@ -204,31 +213,31 @@ MERGE (perf_e33d873d572d:Performance{ uuid: 'b66843f7-1eb7-4dd9-abc9-e33d873d572
 SET perf_e33d873d572d.name = 'Thank You Thank You'
 SET perf_e33d873d572d.duration = '6:55'
 SET perf_e33d873d572d.source = 'musicbrainz.org'
-SET perf_e33d873d572d.timestamp = timestamp()
+
 
 MERGE (perf_5ddd932379ef:Performance{ uuid: 'bd02b580-d8ae-4367-9a59-5ddd932379ef' })
 SET perf_5ddd932379ef.name = 'Bullfight'
 SET perf_5ddd932379ef.duration = '11:08'
 SET perf_5ddd932379ef.source = 'musicbrainz.org'
-SET perf_5ddd932379ef.timestamp = timestamp()
+
 
 MERGE (perf_0905d963fd04:Performance{ uuid: '0ed14c8c-5c69-4d62-aacf-0905d963fd04' })
 SET perf_0905d963fd04.name = 'Quiet Fire'
 SET perf_0905d963fd04.duration = '8:14'
 SET perf_0905d963fd04.source = 'musicbrainz.org'
-SET perf_0905d963fd04.timestamp = timestamp()
+
 
 MERGE (perf_fe387b8c3b8f:Performance{ uuid: 'bcd3e532-61f7-4278-8455-fe387b8c3b8f' })
 SET perf_fe387b8c3b8f.name = 'Processional'
 SET perf_fe387b8c3b8f.duration = '5:24'
 SET perf_fe387b8c3b8f.source = 'musicbrainz.org'
-SET perf_fe387b8c3b8f.timestamp = timestamp()
+
 
 MERGE (perf_3e11ee1cc728:Performance{ uuid: 'b2bdea63-1aa0-49a7-9ced-3e11ee1cc728' })
 SET perf_3e11ee1cc728.name = 'Sweet Song'
 SET perf_3e11ee1cc728.duration = '6:19'
 SET perf_3e11ee1cc728.source = 'musicbrainz.org'
-SET perf_3e11ee1cc728.timestamp = timestamp()
+
 
 
 
@@ -273,3 +282,7 @@ MERGE (person_8fe19080caaf)-[:PARTICIPATED_IN { roles: ['musician'], instruments
 MERGE (person_22a5fbaaf713)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['double bass'] }]->(perf_3e11ee1cc728)
 MERGE (person_20039cafef7b)-[:PARTICIPATED_IN { roles: ['producer'] }]->(perf_3e11ee1cc728)
 
+
+
+"""
+)

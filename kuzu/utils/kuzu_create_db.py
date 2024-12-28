@@ -138,7 +138,7 @@ conn.execute("CREATE REL TABLE IF NOT EXISTS COMPOSED(From Person TO Work)")
 conn.execute("CREATE REL TABLE IF NOT EXISTS WROTE_LYRICS(From Person TO Work)")
 
 # Performance HAS_PLACE
-conn.execute("CREATE REL TABLE IF NOT EXISTS GROUP HAS_PLACE(From Performance TO Place, From Event to Place, type STRING, begin_date STRING, end_date STRING)")
+conn.execute("CREATE REL TABLE GROUP IF NOT EXISTS HAS_PLACE(From Performance TO Place, From Event to Place, type STRING, begin_date STRING, end_date STRING)")
 
 # Person PARTICIPATED_IN Performance
 conn.execute("CREATE REL TABLE IF NOT EXISTS PARTICIPATED_IN(From Person TO Performance, roles STRING[], instruments STRING[])")

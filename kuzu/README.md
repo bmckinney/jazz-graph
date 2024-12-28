@@ -11,6 +11,13 @@
 
 See: [https://docs.kuzudb.com/installation/](https://docs.kuzudb.com/installation/)
 
+## Create a new database
+
+```
+cd kuzu
+python3 utils/create_db.py
+```
+
 ## Run explorer in docker
 
 ```

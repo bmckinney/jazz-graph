@@ -1,7 +1,7 @@
 # jazz-graph
 jazz discography represented as a structured property graph
 
-## Kuzudb Implementation
+## KuzuDB Implementation
 
 [https://kuzudb.com/](https://kuzudb.com/)
 

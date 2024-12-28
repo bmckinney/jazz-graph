@@ -1,5 +1,5 @@
 # jazz-graph
-jazz discography represented as a neo4j graph
+jazz discography represented as a structured property graph
 
 ## Adding new releases
 

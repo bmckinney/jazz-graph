@@ -1,0 +1,3 @@
+MATCH p = (a)-[part:PARTICIPATED_IN* SHORTEST 1..5 ]-(b)
+      WHERE a.name = 'Roy Haynes' AND b.name = 'Horace Silver'
+      RETURN length(part) AS length;

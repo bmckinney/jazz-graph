@@ -122,8 +122,29 @@ conn.execute(
     """
 )
 
+# Liner Notes Node
+conn.execute(
+    """
+    CREATE NODE TABLE IF NOT EXISTS LinerNotes(
+        uuid STRING, 
+        name STRING, 
+        type STRING, 
+        date STRING,
+        content STRING,
+        tags STRING[],
+        databases STRING[],
+        thejazztome STRING, 
+        internetarchive STRING, 
+        discogs STRING, 
+        PRIMARY KEY (uuid))
+    """
+)
+
 # Release HAS_LABEL
 conn.execute("CREATE REL TABLE IF NOT EXISTS HAS_LABEL(From Release TO Label)")
+
+# Release HAS_LINER_NOTES
+conn.execute("CREATE REL TABLE IF NOT EXISTS HAS_LINER_NOTES(From Release TO LinerNotes)")
 
 # Release HAS_TRACK
 conn.execute("CREATE REL TABLE IF NOT EXISTS HAS_TRACK(From Release TO Performance, name STRING, sequence INT64)")
@@ -133,6 +154,9 @@ conn.execute("CREATE REL TABLE IF NOT EXISTS PERFORMANCE_OF(From Performance TO 
 
 # Person COMPOSED Work
 conn.execute("CREATE REL TABLE IF NOT EXISTS COMPOSED(From Person TO Work)")
+
+# Person AUTHORED LinerNotes
+conn.execute("CREATE REL TABLE IF NOT EXISTS AUTHORED(From Person TO LinerNotes)")
 
 # Person WROTE_LYRICS Work
 conn.execute("CREATE REL TABLE IF NOT EXISTS WROTE_LYRICS(From Person TO Work)")

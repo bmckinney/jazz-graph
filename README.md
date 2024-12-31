@@ -303,10 +303,20 @@ kuzu> MATCH p = (a)-[part:PARTICIPATED_IN* ALL SHORTEST 1..3 ]-(b)
 Time: 2.04ms (compiling), 5.46ms (executing)
 ```
 
-#### What is the shortest path between Roy Haynes and Horace Silver?
+#### What is the shortest path between Roy Haynes and Horace Silver where both participated as musicians?
 
 ```
-MATCH p = ((a:Person {name: "Roy Haynes"})-[:PARTICIPATED_IN* SHORTEST]-(b:Person {name: "Horace Silver"})) RETURN p
+MATCH p = ((a:Person {name: "Roy Haynes"})-[part:PARTICIPATED_IN* SHORTEST (r, _ | WHERE "musician" in r.roles)]-(b:Person {name: "Horace Silver"})) 
+RETURN p
 ```
 
-![Alt text](https://github.com/bmckinney/jazz-graph/blob/master/screenshots/shortest-path-example.png?raw=true "Roy Haynes shortest path to Horace Silver")
+![Alt text](https://github.com/bmckinney/jazz-graph/blob/master/screenshots/shortest-path-example-2.png?raw=true "Roy Haynes shortest path to Horace Silver")
+
+#### What is the shortest path between Roy Haynes and Jason Moran regardless of the participation role?
+
+```
+MATCH p = ((a:Person {name: "Roy Haynes"})-[part:PARTICIPATED_IN* SHORTEST]-(b:Person {name: "Jason Moran"})) 
+RETURN p
+```
+
+![Alt text](https://github.com/bmckinney/jazz-graph/blob/master/screenshots/shortest-path-example-3.png?raw=true "Roy Haynes shortest path to Jason Moran")

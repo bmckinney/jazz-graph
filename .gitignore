@@ -42,3 +42,5 @@ import-musicbrainz-release.log
 # kuzu db files and executables
 kuzu/haynes_db/
 kuzu/kuzu
+
+kuzu/history.txt

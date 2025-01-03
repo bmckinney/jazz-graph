@@ -304,11 +304,12 @@ def main(args):
 
         if 'label-info-list' in rel:
             for label in rel['label-info-list']:
-                lid = "label_" + label['label']['id'].rsplit('-', 1)[1]
-                print ("// labels")
-                print ("\nMERGE (" + lid + ":Label{ uuid: '" + label['label']['id'] + "' })")
-                print ("SET " + lid + ".name= '" + label['label']['name'] + "'")
-                labels += "MERGE (" + rid + ")-[:HAS_LABEL]->(" + lid + ")\n"
+                if 'label' in label:
+                    lid = "label_" + label['label']['id'].rsplit('-', 1)[1]
+                    print ("// labels")
+                    print ("\nMERGE (" + lid + ":Label{ uuid: '" + label['label']['id'] + "' })")
+                    print ("SET " + lid + ".name= '" + label['label']['name'] + "'")
+                    labels += "MERGE (" + rid + ")-[:HAS_LABEL]->(" + lid + ")\n"
 
         if len(performances) > 0:
             print ("\n// performances")

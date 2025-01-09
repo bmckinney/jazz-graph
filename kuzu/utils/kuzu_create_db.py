@@ -45,6 +45,9 @@ conn.execute(
     CREATE NODE TABLE IF NOT EXISTS Person(
         uuid STRING, 
         name STRING, 
+        aliases STRING[],
+        birth_date STRING,
+        death_date STRING,
         gender STRING,
         country STRING, 
         disambiguation STRING,

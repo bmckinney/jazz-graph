@@ -85,6 +85,9 @@ def main(args):
                     if artist['type'] == 'recording':
                         tmp_dict["roles"].append("recording engineer")
 
+                    if artist['type'] == 'liner notes':
+                        tmp_dict["roles"].append("liner notes")
+
             # print dictionaries
             for d in ad:
                 participation += artist_participation(d, perfid)

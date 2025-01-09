@@ -1,0 +1,168 @@
+// events
+
+MERGE (event_a77bb3610468:Event{ uuid: '031f6e06-c16f-4eee-ab54-a77bb3610468' })
+SET event_a77bb3610468.name = 'Roy Haynes Quartet Live at the Blue Note'
+SET event_a77bb3610468.date = '2019-06-12'
+SET event_a77bb3610468.type = 'Concert'
+SET event_a77bb3610468.source = 'youtube.com'
+
+
+MERGE (person_6f0a331cc1ca:Person{ uuid: '2c090b57-5e9d-49c5-9b71-6f0a331cc1ca' })
+SET person_6f0a331cc1ca.name = 'Roy Haynes'
+SET person_6f0a331cc1ca.gender = 'Male'
+SET person_6f0a331cc1ca.country = 'US'
+SET person_6f0a331cc1ca.viaf = 'http://viaf.org/viaf/84975999'
+SET person_6f0a331cc1ca.allmusic = 'http://www.allmusic.com/artist/mn0000290464'
+SET person_6f0a331cc1ca.bbc = 'http://www.bbc.co.uk/music/artists/2c090b57-5e9d-49c5-9b71-6f0a331cc1ca'
+SET person_6f0a331cc1ca.imdb = 'http://www.imdb.com/name/nm0371542/'
+SET person_6f0a331cc1ca.wikipedia = 'https://en.wikipedia.org/wiki/Roy_Haynes'
+SET person_6f0a331cc1ca.discogs = 'https://www.discogs.com/artist/255556'
+SET person_6f0a331cc1ca.wikidata = 'https://www.wikidata.org/wiki/Q448235'
+SET person_6f0a331cc1ca.musicbrainz = 'https://musicbrainz.org/artist/2c090b57-5e9d-49c5-9b71-6f0a331cc1ca'
+SET person_6f0a331cc1ca.isni_list = ['http://isni.org/isni/0000000078266176']
+SET person_6f0a331cc1ca.source = 'musicbrainz.org'
+SET person_6f0a331cc1ca.timestamp = timestamp()
+
+MERGE (person_ae183779dae1:Person{ uuid: '33bba978-5cf5-43e4-a247-ae183779dae1' })
+SET person_ae183779dae1.name = 'Jaleel Shaw'
+SET person_ae183779dae1.gender = 'Male'
+SET person_ae183779dae1.country = 'US'
+SET person_ae183779dae1.allmusic = 'https://www.allmusic.com/artist/mn0000361733'
+SET person_ae183779dae1.discogs = 'https://www.discogs.com/artist/1049749'
+SET person_ae183779dae1.viaf = 'http://viaf.org/viaf/277507711'
+SET person_ae183779dae1.wikidata = 'https://www.wikidata.org/wiki/Q1679742'
+SET person_ae183779dae1.databases = ['http://id.loc.gov/authorities/names/no2008145711', 'https://www.worldcat.org/identities/lccn-no2008145711']
+SET person_ae183779dae1.musicbrainz = 'https://musicbrainz.org/artist/33bba978-5cf5-43e4-a247-ae183779dae1'
+SET person_ae183779dae1.isni_list = ['http://isni.org/isni/0000000384727890']
+SET person_ae183779dae1.source = 'musicbrainz.org'
+SET person_ae183779dae1.timestamp = timestamp()
+
+MERGE (person_9fbfb804134b:Person{ uuid: '6788b047-292d-43c6-a781-9fbfb804134b' })
+SET person_9fbfb804134b.name = 'Martin Bejerano'
+SET person_9fbfb804134b.gender = 'Male'
+SET person_9fbfb804134b.allmusic = 'https://www.allmusic.com/artist/mn0000317681'
+SET person_9fbfb804134b.discogs = 'https://www.discogs.com/artist/991779'
+SET person_9fbfb804134b.wikidata = 'https://www.wikidata.org/wiki/Q19665888'
+SET person_9fbfb804134b.musicbrainz = 'https://musicbrainz.org/artist/6788b047-292d-43c6-a781-9fbfb804134b'
+SET person_9fbfb804134b.source = 'musicbrainz.org'
+SET person_9fbfb804134b.timestamp = timestamp()
+
+MERGE (person_db33730eb9a8:Person{ uuid: '07b6ae81-497e-4d8d-a546-db33730eb9a8' })
+SET person_db33730eb9a8.name = 'David Wong'
+SET person_db33730eb9a8.gender = 'Male'
+SET person_db33730eb9a8.disambiguation = 'jazz bassist'
+SET person_db33730eb9a8.country = 'US'
+SET person_db33730eb9a8.source = 'musicbrainz.org'
+SET person_db33730eb9a8.timestamp = timestamp()
+
+// performances
+
+MERGE (perf_6d088d867cab:Performance{ uuid: '104bf94b-597c-4a2d-b6ce-6d088d867cab' })
+SET perf_6d088d867cab.name = 'James'
+SET perf_6d088d867cab.duration = '5:57'
+SET perf_6d088d867cab.begin = '2006-01-20'
+SET perf_6d088d867cab.end = '2006-01-22'
+SET perf_6d088d867cab.source = 'musicbrainz.org'
+SET perf_6d088d867cab.timestamp = timestamp()
+
+MERGE (perf_6e9bc9437335:Performance{ uuid: '6824f6da-70f3-4d5f-977d-6e9bc9437335' })
+SET perf_6e9bc9437335.name = 'Bemsha Swing / True or False'
+SET perf_6e9bc9437335.duration = '8:55'
+SET perf_6e9bc9437335.begin = '2006-01-20'
+SET perf_6e9bc9437335.end = '2006-01-22'
+SET perf_6e9bc9437335.source = 'musicbrainz.org'
+SET perf_6e9bc9437335.timestamp = timestamp()
+
+MERGE (perf_8abe3ccdee07:Performance{ uuid: '4e129775-e34c-46be-bbad-8abe3ccdee07' })
+SET perf_8abe3ccdee07.name = 'Question & Answer'
+SET perf_8abe3ccdee07.duration = '10:16'
+SET perf_8abe3ccdee07.begin = '2002-12-04'
+SET perf_8abe3ccdee07.end = '2002-12-05'
+SET perf_8abe3ccdee07.source = 'musicbrainz.org'
+SET perf_8abe3ccdee07.timestamp = timestamp()
+
+
+// works
+
+MERGE (person_f8091d98cf25:Person{ uuid: '7daac7f9-8fcc-485f-a14f-f8091d98cf25' })
+SET person_f8091d98cf25.name = 'Pat Metheny'
+SET person_f8091d98cf25.gender = 'Male'
+SET person_f8091d98cf25.country = 'US'
+SET person_f8091d98cf25.allmusic = 'https://www.allmusic.com/artist/mn0000179698'
+SET person_f8091d98cf25.bbc = 'https://www.bbc.co.uk/music/artists/7daac7f9-8fcc-485f-a14f-f8091d98cf25'
+SET person_f8091d98cf25.discogs = 'https://www.discogs.com/artist/20185'
+SET person_f8091d98cf25.imdb = 'https://www.imdb.com/name/nm0582533/'
+SET person_f8091d98cf25.viaf = 'http://viaf.org/viaf/22188874'
+SET person_f8091d98cf25.wikidata = 'https://www.wikidata.org/wiki/Q213887'
+SET person_f8091d98cf25.databases = ['http://d-nb.info/gnd/118946803', 'http://id.loc.gov/authorities/names/n78096789', 'https://catalogue.bnf.fr/ark:/12148/cb122016747', 'http://snaccooperative.org/ark:/99166/w6gj10fw', 'https://www.musik-sammler.de/artist/pat-metheny/', 'https://www.progarchives.com/artist.asp?id=2445', 'https://www.worldcat.org/identities/lccn-n78096789']
+SET person_f8091d98cf25.musicbrainz = 'https://musicbrainz.org/artist/7daac7f9-8fcc-485f-a14f-f8091d98cf25'
+SET person_f8091d98cf25.isni_list = ['http://isni.org/isni/0000000121236985']
+SET person_f8091d98cf25.source = 'musicbrainz.org'
+SET person_f8091d98cf25.timestamp = timestamp()
+
+MERGE (person_5260b4274ed4:Person{ uuid: '8e8c7417-c905-46b1-b42a-5260b4274ed4' })
+SET person_5260b4274ed4.name = 'Thelonious Monk'
+SET person_5260b4274ed4.gender = 'Male'
+SET person_5260b4274ed4.country = 'US'
+SET person_5260b4274ed4.allmusic = 'https://www.allmusic.com/artist/mn0000490416'
+SET person_5260b4274ed4.bbc = 'https://www.bbc.co.uk/music/artists/8e8c7417-c905-46b1-b42a-5260b4274ed4'
+SET person_5260b4274ed4.discogs = 'https://www.discogs.com/artist/145256'
+SET person_5260b4274ed4.imdb = 'https://www.imdb.com/name/nm0598243/'
+SET person_5260b4274ed4.viaf = 'http://viaf.org/viaf/44485892'
+SET person_5260b4274ed4.wikidata = 'https://www.wikidata.org/wiki/Q109612'
+SET person_5260b4274ed4.databases = ['http://d-nb.info/gnd/118826158', 'http://id.loc.gov/authorities/names/n82218969', 'https://catalogue.bnf.fr/ark:/12148/cb13897622g', 'http://snaccooperative.org/ark:/99166/w6j38zvn', 'https://rateyourmusic.com/artist/thelonious_monk', 'https://www.worldcat.org/identities/lccn-n82218969']
+SET person_5260b4274ed4.musicbrainz = 'https://musicbrainz.org/artist/8e8c7417-c905-46b1-b42a-5260b4274ed4'
+SET person_5260b4274ed4.isni_list = ['http://isni.org/isni/0000000120249127']
+SET person_5260b4274ed4.source = 'musicbrainz.org'
+SET person_5260b4274ed4.timestamp = timestamp()
+
+MERGE (work_0c2a60e39245:Work{ uuid: '55bc467e-a6f6-3561-87de-0c2a60e39245' })
+SET work_0c2a60e39245.name = 'Bemsha Swing'
+SET work_0c2a60e39245.iswc = 'T-924.101.469-7'
+SET work_0c2a60e39245.type = 'Song'
+SET work_0c2a60e39245.wikidata = 'https://www.wikidata.org/wiki/Q816388'
+SET work_0c2a60e39245.musicbrainz = 'https://musicbrainz.org/work/55bc467e-a6f6-3561-87de-0c2a60e39245'
+SET work_0c2a60e39245.source = 'musicbrainz.org'
+SET work_0c2a60e39245.timestamp = timestamp()
+
+MERGE (work_567b5ea2c2bf:Work{ uuid: 'de481d05-d2a8-369d-b1dc-567b5ea2c2bf' })
+SET work_567b5ea2c2bf.name = 'James'
+SET work_567b5ea2c2bf.iswc = 'T-070.241.328-2'
+SET work_567b5ea2c2bf.source = 'musicbrainz.org'
+SET work_567b5ea2c2bf.timestamp = timestamp()
+
+MERGE (work_9eae6375ecb0:Work{ uuid: '6ae0f429-cd54-3ac2-b635-9eae6375ecb0' })
+SET work_9eae6375ecb0.name = 'Question and Answer'
+SET work_9eae6375ecb0.iswc = 'T-070.243.048-5'
+SET work_9eae6375ecb0.type = 'Song'
+SET work_9eae6375ecb0.source = 'musicbrainz.org'
+SET work_9eae6375ecb0.timestamp = timestamp()
+
+MERGE (work_88af68626085:Work{ uuid: 'ef6b8ef1-0d16-4c4b-87b0-88af68626085' })
+SET work_88af68626085.name = 'Green Chimneys'
+SET work_88af68626085.iswc = 'T-070.234.354-1'
+SET work_88af68626085.type = 'Song'
+SET work_88af68626085.musicbrainz = 'https://musicbrainz.org/work/ef6b8ef1-0d16-4c4b-87b0-88af68626085'
+SET work_88af68626085.source = 'musicbrainz.org'
+SET work_88af68626085.timestamp = timestamp()
+
+// performances of
+MERGE (perf_439f808dabdc)-[:PERFORMANCE_OF]->(work_01f1b65c688e)
+MERGE (perf_2ade057eda06)-[:PERFORMANCE_OF]->(work_0ffd3097a545)
+MERGE (perf_6e9bc9437335)-[:PERFORMANCE_OF {medley: true}]->(work_0c2a60e39245)
+MERGE (perf_dd16167c924c)-[:PERFORMANCE_OF]->(work_d2abd8079b79)
+MERGE (perf_baecb582ab9a)-[:PERFORMANCE_OF]->(work_53195ae330bb)
+MERGE (perf_6d088d867cab)-[:PERFORMANCE_OF]->(work_567b5ea2c2bf)
+
+
+// composers
+MERGE (person_a37897b950ce)-[:COMPOSED]->(work_01f1b65c688e)
+MERGE (person_a37897b950ce)-[:WROTE_LYRICS]->(work_01f1b65c688e)
+MERGE (person_9ee947b4ce37)-[:COMPOSED]->(work_0ffd3097a545)
+MERGE (person_173c16a9a591)-[:COMPOSED]->(work_0c2a60e39245)
+MERGE (person_5260b4274ed4)-[:COMPOSED]->(work_0c2a60e39245)
+MERGE (person_72ad46cdb831)-[:COMPOSED]->(work_d2abd8079b79)
+MERGE (person_c73775716312)-[:COMPOSED]->(work_53195ae330bb)
+MERGE (person_0ad7756dd538)-[:COMPOSED]->(work_567b5ea2c2bf)
+MERGE (person_f8091d98cf25)-[:COMPOSED]->(work_567b5ea2c2bf)
+

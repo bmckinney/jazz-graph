@@ -122,50 +122,48 @@ conn.execute(
     """
 )
 
-# Liner Notes Node
+# Annotation Node
 conn.execute(
     """
-    CREATE NODE TABLE IF NOT EXISTS LinerNotes(
+    CREATE NODE TABLE IF NOT EXISTS Annotation(
         uuid STRING, 
         name STRING, 
         type STRING, 
         date STRING,
         content STRING,
-        tags STRING[],
+        citation STRING,
         databases STRING[],
-        thejazztome STRING, 
-        internetarchive STRING, 
-        discogs STRING, 
+        tags STRING[],
         PRIMARY KEY (uuid))
     """
 )
 
 # Release HAS_LABEL
-conn.execute("CREATE REL TABLE IF NOT EXISTS HAS_LABEL(From Release TO Label)")
+conn.execute("CREATE REL TABLE IF NOT EXISTS HAS_LABEL(FROM Release TO Label)")
 
-# Release HAS_LINER_NOTES
-conn.execute("CREATE REL TABLE IF NOT EXISTS HAS_LINER_NOTES(From Release TO LinerNotes)")
+# Release HAS_ANNOTATION
+conn.execute("CREATE REL TABLE GROUP IF NOT EXISTS HAS_ANNOTATION(FROM Release TO Annotation, FROM Performance TO Annotation, FROM Work TO Annotation, FROM Event TO Annotation,  FROM Person TO Annotation)")
 
 # Release HAS_TRACK
-conn.execute("CREATE REL TABLE IF NOT EXISTS HAS_TRACK(From Release TO Performance, name STRING, sequence INT64)")
+conn.execute("CREATE REL TABLE IF NOT EXISTS HAS_TRACK(FROM Release TO Performance, name STRING, sequence INT64)")
 
 # PERFORMANCE_OF Work
-conn.execute("CREATE REL TABLE IF NOT EXISTS PERFORMANCE_OF(From Performance TO Work, medley BOOLEAN)")
+conn.execute("CREATE REL TABLE IF NOT EXISTS PERFORMANCE_OF(FROM Performance TO Work, medley BOOLEAN)")
 
 # Person COMPOSED Work
-conn.execute("CREATE REL TABLE IF NOT EXISTS COMPOSED(From Person TO Work)")
+conn.execute("CREATE REL TABLE IF NOT EXISTS COMPOSED(FROM Person TO Work)")
 
-# Person AUTHORED LinerNotes
-conn.execute("CREATE REL TABLE IF NOT EXISTS AUTHORED(From Person TO LinerNotes)")
+# Person CREATED Annotation
+conn.execute("CREATE REL TABLE IF NOT EXISTS CREATED(FROM Person TO Annotation, role STRING)")
 
 # Person WROTE_LYRICS Work
-conn.execute("CREATE REL TABLE IF NOT EXISTS WROTE_LYRICS(From Person TO Work)")
+conn.execute("CREATE REL TABLE IF NOT EXISTS WROTE_LYRICS(FROM Person TO Work)")
 
 # Performance HAS_PLACE
-conn.execute("CREATE REL TABLE GROUP IF NOT EXISTS HAS_PLACE(From Performance TO Place, From Event to Place, type STRING, begin_date STRING, end_date STRING)")
+conn.execute("CREATE REL TABLE GROUP IF NOT EXISTS HAS_PLACE(FROM Performance TO Place, FROM Event to Place, type STRING, begin_date STRING, end_date STRING)")
 
 # Person PARTICIPATED_IN Performance
-conn.execute("CREATE REL TABLE IF NOT EXISTS PARTICIPATED_IN(From Person TO Performance, roles STRING[], instruments STRING[])")
+conn.execute("CREATE REL TABLE IF NOT EXISTS PARTICIPATED_IN(FROM Person TO Performance, roles STRING[], instruments STRING[])")
 
 # Event HAS_PERFORMANCE
-conn.execute("CREATE REL TABLE IF NOT EXISTS HAS_PERFORMANCE(From Event TO Performance, begin_date STRING, end_date STRING)")
+conn.execute("CREATE REL TABLE IF NOT EXISTS HAS_PERFORMANCE(FROM Event TO Performance, begin_date STRING, end_date STRING)")

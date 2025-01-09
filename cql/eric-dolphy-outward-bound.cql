@@ -381,7 +381,7 @@ MERGE (person_e327e692bb5a)-[:PARTICIPATED_IN { roles: ['musician'], instruments
 MERGE (person_a315ffe2a522)-[:PARTICIPATED_IN { roles: ['musician'], instruments: ['double bass'] }]->(perf_ba25a9a72b45)
 MERGE (person_05d508e09a73)-[:PARTICIPATED_IN { roles: ['recording engineer'] }]->(perf_ba25a9a72b45)
 
-// liner notes
+// annotations
 MERGE (person_c3ea1fca0dd8:Person{ uuid: '95e86db2-7d52-48ed-a4cb-c3ea1fca0dd8' })
 SET person_c3ea1fca0dd8.name = 'Ron Eyre'
 SET person_c3ea1fca0dd8.gender = 'Male'
@@ -390,15 +390,13 @@ SET person_c3ea1fca0dd8.discogs = 'https://www.discogs.com/artist/1650513-Ron-Ey
 SET person_c3ea1fca0dd8.musicbrainz = 'https://musicbrainz.org/artist/95e86db2-7d52-48ed-a4cb-c3ea1fca0dd8'
 SET person_c3ea1fca0dd8.source = 'musicbrainz.org'
 
-MERGE (liner_notes_ef33ddf69a55:LinerNotes{ uuid: 'a0d2a07a-aaba-418b-ae08-ef33ddf69a55' })
-SET liner_notes_ef33ddf69a55.name = 'Outward Bound, Liner Notes by Ron Eyre'
-SET liner_notes_ef33ddf69a55.date = '1960'
-SET liner_notes_ef33ddf69a55.type = 'Original'
-SET liner_notes_ef33ddf69a55.thejazztome = 'https://thejazztome.info/eric-dolphy-outward-bound/'
-SET liner_notes_ef33ddf69a55.internetarchive = 'https://archive.org/details/cd_outward-bound_eric-dolphy/page/n1/mode/1up'
-SET liner_notes_ef33ddf69a55.discogs = 'https://i.discogs.com/Kqj9UxgaHbqXSf6udE4xXcjmGytLYW5tLY55FvvhTx8/rs:fit/g:sm/q:90/h:600/w:595/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI5NzM1/NTItMTQ1ODAwMjY1/Ni04OTk5LmpwZWc.jpeg'
+MERGE (annotation_ef33ddf69a55:Annotation{ uuid: 'a0d2a07a-aaba-418b-ae08-ef33ddf69a55' })
+SET annotation_ef33ddf69a55.name = 'Outward Bound, Liner Notes by Ron Eyre'
+SET annotation_ef33ddf69a55.date = '1960'
+SET annotation_ef33ddf69a55.type = 'Liner Notes'
+SET annotation_ef33ddf69a55.databases = ['https://thejazztome.info/eric-dolphy-outward-bound/', 'https://archive.org/details/cd_outward-bound_eric-dolphy/page/n1/mode/1up', 'https://i.discogs.com/Kqj9UxgaHbqXSf6udE4xXcjmGytLYW5tLY55FvvhTx8/rs:fit/g:sm/q:90/h:600/w:595/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI5NzM1/NTItMTQ1ODAwMjY1/Ni04OTk5LmpwZWc.jpeg']
 
 
-MERGE (person_c3ea1fca0dd8)-[:AUTHORED]->(liner_notes_ef33ddf69a55)
+MERGE (person_c3ea1fca0dd8)-[:CREATED { role: 'author' }]->(annotation_ef33ddf69a55)
 
-MERGE (release_e07e145d5b54)-[:HAS_LINER_NOTES]->(liner_notes_ef33ddf69a55)
+MERGE (release_e07e145d5b54)-[:HAS_ANNOTATION]->(annotation_ef33ddf69a55)

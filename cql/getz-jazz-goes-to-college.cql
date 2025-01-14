@@ -1,7 +1,7 @@
 // events
 
 MERGE (event_9f3753384ec0:Event{ uuid: '57318943-a385-4a5e-82da-9f3753384ec0' })
-SET event_9f3753384ec0.name = 'Jazz Goes To College'
+SET event_9f3753384ec0.name = 'Stan Getz - Jazz Goes To College'
 SET event_9f3753384ec0.date = '1966-11-14'
 SET event_9f3753384ec0.type = 'Concert'
 SET event_9f3753384ec0.musicbrainz = 'http://musicbrainz.org/release/57318943-a385-4a5e-82da-9f3753384ec0'

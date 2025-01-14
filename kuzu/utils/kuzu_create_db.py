@@ -35,6 +35,7 @@ conn.execute(
         type STRING, 
         musicbrainz STRING, 
         source STRING, 
+        links STRING[],
         PRIMARY KEY (uuid))
     """""
 )
@@ -141,11 +142,33 @@ conn.execute(
     """
 )
 
+# Video Node
+conn.execute(
+    """
+    CREATE NODE TABLE IF NOT EXISTS Video(
+        uuid STRING, 
+        name STRING, 
+        creator STRING,
+        date STRING,
+        begin_timestamp STRING,
+        end_timestamp STRING,
+        duration STRING,
+        citation STRING,
+        links STRING[],
+        tags STRING[],
+        PRIMARY KEY (uuid))
+    """
+)
+
+
 # Release HAS_LABEL
 conn.execute("CREATE REL TABLE IF NOT EXISTS HAS_LABEL(FROM Release TO Label)")
 
-# Release HAS_ANNOTATION
-conn.execute("CREATE REL TABLE GROUP IF NOT EXISTS HAS_ANNOTATION(FROM Release TO Annotation, FROM Performance TO Annotation, FROM Work TO Annotation, FROM Event TO Annotation,  FROM Person TO Annotation)")
+# Release, Performance, Work, Event, Person HAS_ANNOTATION
+conn.execute("CREATE REL TABLE GROUP IF NOT EXISTS HAS_ANNOTATION(FROM Release TO Annotation, FROM Performance TO Annotation, FROM Work TO Annotation, FROM Event TO Annotation, FROM Person TO Annotation)")
+
+# Release, Performance, Event HAS_Video
+conn.execute("CREATE REL TABLE GROUP IF NOT EXISTS HAS_VIDEO(FROM Release TO Video, FROM Performance TO Video, FROM Event TO Video, begin_timestamp STRING, end_timestamp STRING)")
 
 # Release HAS_TRACK
 conn.execute("CREATE REL TABLE IF NOT EXISTS HAS_TRACK(FROM Release TO Performance, name STRING, sequence INT64)")
@@ -158,6 +181,9 @@ conn.execute("CREATE REL TABLE IF NOT EXISTS COMPOSED(FROM Person TO Work)")
 
 # Person CREATED Annotation
 conn.execute("CREATE REL TABLE IF NOT EXISTS CREATED(FROM Person TO Annotation, role STRING)")
+
+# Person CREATED Video
+conn.execute("CREATE REL TABLE IF NOT EXISTS CREATED(FROM Person TO Video, role STRING)")
 
 # Person WROTE_LYRICS Work
 conn.execute("CREATE REL TABLE IF NOT EXISTS WROTE_LYRICS(FROM Person TO Work)")

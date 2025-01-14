@@ -1,0 +1,38 @@
+version: '3.8'
+
+networks:
+  caddy:
+
+services:
+  kuzudb:
+    image: kuzudb/explorer:latest
+    container_name: kuzudb
+    restart: unless-stopped
+    volumes:
+      - ${KUZUDB_ABSOLUTE_PATH}:/database
+    environment:
+      - MODE=READ_ONLY
+    ports:
+      - "8000:8000"
+    networks:
+     - caddy
+
+  caddy:
+    image: caddy:latest
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - "443:443"
+      - "443:443/udp"
+      - "80:80"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy_data:/data
+      - ./caddy_config:/config
+    networks:
+     - caddy
+
+volumes:
+  caddy_data:
+    external: true
+  caddy_config:

@@ -1,0 +1,7 @@
+{
+  email admin@domain.com
+}
+
+domain.com {
+  reverse_proxy kuzudb:8000
+}

@@ -1,7 +1,8 @@
 {
-  email admin@domain.com
+  email {$EMAIL}
 }
 
-domain.com {
-  reverse_proxy kuzudb:8000
+localhost {
+  reverse_proxy kuzudb-explorer:8000
+  reverse_proxy /api kuzudb-api-server:8001
 }
